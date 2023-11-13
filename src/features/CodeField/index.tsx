@@ -6,18 +6,18 @@ import Editor from 'src/features/Editor';
 
 import { useCodeField } from 'src/features/CodeField/useCodeField';
 
-import styles from 'src/features/CodeEditor/styles.module.css';
-
 const CodeEditor: FC = () => {
-  const { width, isDragging, handleMouseDown, handleMouseMove, handleMouseUp } = useCodeField();
+  const { isDragging, userPreferences, handleMouseDown, handleMouseMove, handleMouseUp } =
+    useCodeField();
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className=" relative flex flex-col gap-3">
       <div
-        className="min-h-[250px] bg-[red] p-[64px]"
+        className="h-[380px] bg-[red]"
         style={{
-          width: `${width}px`,
-          resize: 'both',
+          width: `${userPreferences.width}px`,
+          padding: userPreferences.padding,
+          resize: 'horizontal',
         }}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
@@ -30,7 +30,7 @@ const CodeEditor: FC = () => {
           isDragging ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
       >
-        {width}px
+        {userPreferences.width}px
       </div>
     </div>
   );

@@ -5,4 +5,6 @@ export enum SearchParam {
   darkMode = 'darkMode',
   padding = 'padding',
   language = 'language',
+  font = 'font',
+  title = 'title',
 }

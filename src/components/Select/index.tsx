@@ -1,16 +1,18 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { CSSProperties, FC, useState } from 'react';
 import Image from 'next/image';
 
-import arrowDown from 'src/assets/arrow-down.svg';
+import arrowDown from 'src/assets/images/svg/arrow-down.svg';
+import { ReactChildren } from 'src/types';
 
 type SelectProps = {
-  listItems: any[];
-};
+  value?: string;
+  style?: CSSProperties;
+} & ReactChildren;
 
-const Select: FC<SelectProps> = ({ listItems }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Select: FC<SelectProps> = ({ value, style, children }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleClick = (): void => {
     setIsOpen((prevState) => !prevState);
@@ -19,10 +21,11 @@ const Select: FC<SelectProps> = ({ listItems }) => {
   return (
     <div
       className="relative p-1 border-[1px] border-[#464646] rounded-lg text-sm cursor-pointer"
+      style={style}
       onClick={handleClick}
     >
-      <div className="flex items-center gap-5">
-        <div className="text-white">Value</div>
+      <div className="flex items-center justify-between">
+        <div className="text-white">{value}</div>
         <div>
           <Image
             className={`${isOpen ? 'scale-y-[-1]' : ''}`}
@@ -34,17 +37,8 @@ const Select: FC<SelectProps> = ({ listItems }) => {
         </div>
       </div>
       {isOpen && (
-        <ul
-          className={`absolute left-0 top-[120%] p-1 border-[1px] border-[#464646] rounded-lg text-sm bg-[#191919] text-[#8b8b8b]`}
-        >
-          {listItems.map((item) => (
-            <li
-              className="p-1 rounded-lg transition-all duration-200 hover:bg-[#363636]"
-              key={Date.now()}
-            >
-              {item}
-            </li>
-          ))}
+        <ul className="absolute left-0 bottom-[120%] max-h-80 p-1 overflow-y-auto overflow-x-hidden border-[1px] border-[#464646] rounded-lg text-sm bg-[#191919] text-[#8b8b8b] scrollbar-track-transparent">
+          {children}
         </ul>
       )}
     </div>

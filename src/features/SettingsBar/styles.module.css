@@ -13,3 +13,7 @@
 .active {
   @apply rounded-lg text-white bg-[#303030];
 }
+
+.menuItem {
+  @apply p-1 rounded-lg hover:bg-[#363636];
+}

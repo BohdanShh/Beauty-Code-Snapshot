@@ -6,17 +6,31 @@ import Switch from 'src/components/Switch';
 import Select from 'src/components/Select';
 
 import { useSettingsBar } from 'src/features/SettingsBar/useSettingsBar';
+import { LANGUAGES } from 'src/features/SettingsBar/constants';
 
 import styles from 'src/features/SettingsBar/styles.module.css';
 
 const SettingsBar: FC = () => {
-  const { paddingButtons, handlePaddingChange, isActiveButton } = useSettingsBar();
+  const {
+    paddingButtons,
+    userPreferences,
+    isActiveButton,
+    handleLanguageChange,
+    handlePaddingChange,
+    isActiveLanguage,
+  } = useSettingsBar();
 
   return (
-    <div className="flex gap-8 border-[1px] border-[#464646] p-7 rounded-lg bg-[#191919]">
+    <div className="fixed bottom-8 left-1/2 flex flex-wrap gap-8 border-[1px] border-[#464646] p-7 rounded-lg bg-[#191919] -translate-x-1/2">
       <div className={styles.flexItem}>
         <div className={styles.label}>Theme</div>
-        <Select listItems={[]} />
+        <Select>
+          {LANGUAGES.map(({ value, text, id }) => (
+            <li className={styles.menuItem} key={id} onClick={() => handleLanguageChange(value)}>
+              {text}
+            </li>
+          ))}
+        </Select>
       </div>
       <div className={styles.flexItem}>
         <div className={styles.label}>Background</div>
@@ -42,7 +56,28 @@ const SettingsBar: FC = () => {
       </div>
       <div className={styles.flexItem}>
         <div className={styles.label}>Language</div>
-        <Select listItems={[1, 2, 3]} />
+        <Select value={userPreferences.language} style={{ width: 150 }}>
+          {LANGUAGES.map(({ value, text, id }) => (
+            <li className={styles.menuItem} key={id} onClick={() => handleLanguageChange(value)}>
+              {text}
+            </li>
+          ))}
+        </Select>
+      </div>
+      <div className={styles.flexItem}>
+        <div className={styles.label}>Font</div>
+        <Select>
+          {LANGUAGES.map(({ value, text, id }) => (
+            <li className={styles.menuItem} key={id} data-value={value}>
+              {text}
+            </li>
+          ))}
+        </Select>
+      </div>
+      <div className={styles.flexItem}>
+        <button className="h-full rounded-lg text-[#ee5e5e] px-4 bg-[#ee5e5e2d] transition-all duration-200 hover:bg-[#ee5e5e54]">
+          Export
+        </button>
       </div>
     </div>
   );

@@ -1,3 +1,7 @@
 .circle {
   @apply w-4 h-4 rounded-full;
 }
+
+.titleField {
+  @apply absolute top-4 left-1/2 -translate-x-1/2 leading-4 text-center text-[#8b8b8b];
+}

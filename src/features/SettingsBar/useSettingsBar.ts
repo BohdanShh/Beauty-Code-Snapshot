@@ -1,29 +1,29 @@
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { MouseEvent, useState } from 'react';
 import { SearchParam } from 'src/constants';
+
+import { useUrlManager } from 'src/hooks/useUrlManager';
+import { useGetUserPreferences } from 'src/hooks/useGetUserPreferences';
 
 import styles from 'src/features/SettingsBar/styles.module.css';
 
 export const useSettingsBar = () => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  const [background, setBackground] = useState<boolean>(true);
-  const [padding, setPadding] = useState<number>(
-    Number(searchParams.get(SearchParam.padding)) || 64
-  );
+  const { addSearchParam } = useUrlManager();
+  const userPreferences = useGetUserPreferences();
 
   const handlePaddingChange = (value: number): void => {
-    const params = new URLSearchParams(searchParams);
+    addSearchParam(SearchParam.padding, value.toString());
 
-    params.set(SearchParam.padding, value.toString());
-    router.push(`${pathname}?${params}`);
-
-    setPadding(value);
+    userPreferences.setPadding(value);
   };
 
-  const isActiveButton = (value: number): boolean => value === padding;
+  const handleLanguageChange = (value: string): void => {
+    addSearchParam(SearchParam.language, value);
+
+    userPreferences.setLanguage(value);
+  };
+
+  const isActiveButton = (value: number): boolean => value === userPreferences.padding;
+
+  const isActiveLanguage = (value: string): boolean => value === userPreferences.language;
 
   const paddingButtons = [
     { classNames: styles.paddingBtn, value: 16, onClick: handlePaddingChange, id: '1' },
@@ -32,5 +32,12 @@ export const useSettingsBar = () => {
     { classNames: styles.paddingBtn, value: 128, onClick: handlePaddingChange, id: '4' },
   ];
 
-  return { paddingButtons, handlePaddingChange, isActiveButton };
+  return {
+    paddingButtons,
+    userPreferences,
+    handlePaddingChange,
+    isActiveButton,
+    handleLanguageChange,
+    isActiveLanguage,
+  };
 };

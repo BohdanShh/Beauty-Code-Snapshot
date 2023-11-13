@@ -1,7 +1,0 @@
-.background {
-  @apply absolute bottom-0 left-1/2 w-[200px] h-[100px] bg-[#456afc] blur-[100px] opacity-[1] translate-y-1/2 -translate-x-1/2;
-}
-
-.container {
-  @apply h-full relative;
-}

@@ -7,9 +7,9 @@
 }
 
 .active .thumb {
-  @apply left-[26px] -translate-x-full;
+  @apply left-[25px] -translate-x-full;
 }
 
 .thumb {
-  @apply absolute top-1/2 left-[2px] w-[10px] h-[10px] rounded-full bg-white -translate-y-1/2 transition-all duration-200;
+  @apply absolute top-1/2 left-[3px] w-[10px] h-[10px] rounded-full bg-white -translate-y-1/2 transition-all duration-200;
 }
