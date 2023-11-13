@@ -1,0 +1,15 @@
+.btn {
+  @apply relative w-7 h-4 rounded-lg p-[2px] bg-[#474747] cursor-pointer transition-all duration-200;
+}
+
+.active {
+  @apply bg-[#56c2ff];
+}
+
+.active .thumb {
+  @apply left-[26px] -translate-x-full;
+}
+
+.thumb {
+  @apply absolute top-1/2 left-[2px] w-[10px] h-[10px] rounded-full bg-white -translate-y-1/2 transition-all duration-200;
+}

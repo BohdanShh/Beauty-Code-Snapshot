@@ -1,0 +1,7 @@
+.label {
+  @apply text-sm text-[#8b8b8b];
+}
+
+.flexItem {
+  @apply flex flex-col gap-2;
+}

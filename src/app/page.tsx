@@ -1,11 +1,13 @@
 import { NextPage } from 'next';
 
-import styles from 'src/app/page.module.css';
+import SettingsBar from 'src/features/SettingsBar';
+
+import styles from 'src/app/styles.module.css';
 
 const Home: NextPage = () => {
   return (
     <div>
-      <h1>Hello World</h1>
+      <SettingsBar />
       <div className={styles.background} />
     </div>
   );
