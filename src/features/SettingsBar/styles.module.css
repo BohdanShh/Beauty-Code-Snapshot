@@ -5,3 +5,11 @@
 .flexItem {
   @apply flex flex-col gap-2;
 }
+
+.paddingBtn {
+  @apply p-1 text-[#8b8b8b] transition-all duration-200 cursor-pointer hover:text-white;
+}
+
+.active {
+  @apply rounded-lg text-white bg-[#303030];
+}
