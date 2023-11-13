@@ -23,9 +23,7 @@ export const useSettingsBar = () => {
     setPadding(value);
   };
 
-  const isActiveButton = (value: number): boolean => {
-    return searchParams.get(SearchParam.padding) === value.toString();
-  };
+  const isActiveButton = (value: number): boolean => value === padding;
 
   const paddingButtons = [
     { classNames: styles.paddingBtn, value: 16, onClick: handlePaddingChange, id: '1' },
@@ -34,5 +32,5 @@ export const useSettingsBar = () => {
     { classNames: styles.paddingBtn, value: 128, onClick: handlePaddingChange, id: '4' },
   ];
 
-  return { paddingButtons, searchParams, handlePaddingChange, isActiveButton };
+  return { paddingButtons, handlePaddingChange, isActiveButton };
 };

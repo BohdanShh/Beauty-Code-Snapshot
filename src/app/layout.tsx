@@ -8,7 +8,7 @@ import { ReactChildren } from 'src/types';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Code editor',
+  title: 'Code Snap',
   description: 'Generate your code',
 };
 

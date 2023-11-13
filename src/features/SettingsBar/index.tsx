@@ -8,11 +8,9 @@ import Select from 'src/components/Select';
 import { useSettingsBar } from 'src/features/SettingsBar/useSettingsBar';
 
 import styles from 'src/features/SettingsBar/styles.module.css';
-import { SearchParam } from 'src/constants';
 
 const SettingsBar: FC = () => {
-  const { padding, paddingButtons, searchParams, handlePaddingChange, isActiveButton } =
-    useSettingsBar();
+  const { paddingButtons, handlePaddingChange, isActiveButton } = useSettingsBar();
 
   return (
     <div className="flex gap-8 border-[1px] border-[#464646] p-7 rounded-lg bg-[#191919]">
