@@ -21,8 +21,6 @@ const SettingsBar: FC = () => {
     handleThemeChange,
   } = useSettingsBar();
 
-  console.log(userPreferences);
-
   return (
     <div className="fixed bottom-8 left-1/2 flex max-w-[1000px] w-full justify-between border-[1px] border-[#464646] p-7 rounded-lg bg-[#191919] -translate-x-1/2">
       <div className={styles.flexItem}>

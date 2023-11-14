@@ -1,4 +1,5 @@
-import { MouseEvent, useState } from 'react';
+import { useState } from 'react';
+import { ResizeCallback } from 're-resizable';
 
 import { SearchParam } from 'src/constants';
 import { useUrlManager } from 'src/hooks/useUrlManager';
@@ -9,34 +10,24 @@ export const useCodeField = () => {
   const userPreferences = useGetUserPreferences();
 
   const [isDragging, setIsDragging] = useState<boolean>(false);
-  const [startX, setStartX] = useState<number>(0);
 
-  const handleMouseDown = (event: MouseEvent<HTMLDivElement>): void => {
+  const handleResizeStart = (): void => {
     setIsDragging(true);
-    setStartX(event.clientX);
   };
 
-  const handleMouseMove = (event: MouseEvent<HTMLDivElement>): void => {
-    if (isDragging) {
-      const newWidth = userPreferences.width + (event.clientX - startX);
+  const handleResize: ResizeCallback = (event, direction, ref, delta): void => {
+    addSearchParam(SearchParam.width, ref.clientWidth.toString());
 
-      if (newWidth < 520 || newWidth > 920) return;
-
-      setStartX(event.clientX);
-
-      addSearchParam(SearchParam.width, newWidth.toString());
-
-      userPreferences.setWidth(newWidth);
-    }
+    userPreferences.setWidth(ref.clientWidth);
   };
 
-  const handleMouseUp = (): void => setIsDragging(false);
+  const handleResizeStop = (): void => setIsDragging(false);
 
   return {
     isDragging,
     userPreferences,
-    handleMouseDown,
-    handleMouseMove,
-    handleMouseUp,
+    handleResizeStart,
+    handleResize,
+    handleResizeStop,
   };
 };

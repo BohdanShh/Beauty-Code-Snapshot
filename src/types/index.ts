@@ -23,6 +23,8 @@ export type ThemeClasses = {
   blueSteel: string;
   hawaii: string;
   witch: string;
+  emerald: string;
+  blueFlame: string;
 };
 
 export type LanguagesClasses = {

@@ -20,17 +20,21 @@ export const THEME_CLASSES: ThemeClasses = {
   hawaii: 'Hawaii',
   valentine: 'Valentine',
   witch: 'Witch',
+  emerald: 'Emerald',
+  blueFlame: 'Blue Flame',
 };
 
 export const THEME_VALUES = {
-  hyper: 'bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500',
-  oceanic: 'bg-gradient-to-r from-green-300 via-blue-500 to-purple-600',
-  cottonCandy: 'bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400',
-  gotham: 'bg-gradient-to-r from-gray-700 via-gray-900 to-black',
-  blueSteel: 'bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800',
-  hawaii: 'bg-gradient-to-r from-green-300 via-yellow-300 to-pink-300',
-  valentine: 'bg-gradient-to-r from-red-200 to-red-600',
-  witch: 'bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900',
+  hyper: 'bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500',
+  oceanic: 'bg-gradient-to-br from-green-300 via-blue-500 to-purple-600',
+  cottonCandy: 'bg-gradient-to-br from-pink-300 via-purple-300 to-indigo-400',
+  gotham: 'bg-gradient-to-br from-gray-700 via-gray-900 to-black',
+  blueSteel: 'bg-gradient-to-br from-gray-400 via-gray-600 to-blue-800',
+  hawaii: 'bg-gradient-to-br from-green-300 via-yellow-300 to-pink-300',
+  valentine: 'bg-gradient-to-br from-red-200 to-red-600',
+  witch: 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900',
+  emerald: 'bg-gradient-to-br from-emerald-500 to-lime-600',
+  blueFlame: 'bg-gradient-to-br from-amber-200 via-violet-600 to-sky-900',
 };
 
 export const LANGUAGE_CLASSES: LanguagesClasses = {

@@ -7,7 +7,7 @@ const Editor: FC = () => {
   const { editMode, userPreferences, handleClick, handleChange, handleBlur } = useEditor();
 
   return (
-    <div className="relative w-full h-full p-4 rounded-lg border-[1px] border-[#464646] bg-[#191919c4]">
+    <div className="relative w-full h-full p-4 rounded-lg border-[1px] border-[#8f8f8f] bg-[#191919c4]">
       <div>
         <div className="flex items-center gap-1">
           <div className={`${styles.circle} bg-[#ff605c]`} />
