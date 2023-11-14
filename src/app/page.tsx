@@ -6,7 +6,7 @@ import CodeField from 'src/features/CodeField';
 import SettingsBar from 'src/features/SettingsBar';
 
 import { useGetUserPreferences } from 'src/hooks/useGetUserPreferences';
-import { THEME_CLASSES } from 'src/constants';
+import { THEME_VALUES } from 'src/constants';
 import { ThemeClasses } from 'src/types';
 
 const Home: NextPage = () => {
@@ -18,7 +18,7 @@ const Home: NextPage = () => {
       <SettingsBar />
       <div
         className={`fixed bottom-0 left-1/2 w-[300px] h-[50px] rounded-full ${
-          THEME_CLASSES[userPreferences.theme as keyof ThemeClasses]
+          THEME_VALUES[userPreferences.theme as keyof ThemeClasses]
         } blur-[100px] -translate-x-1/2 translate-y-1/2`}
       />
     </div>

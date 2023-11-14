@@ -1,4 +1,4 @@
-import { ThemeClasses } from 'src/types';
+import { LanguagesClasses, ThemeClasses } from 'src/types';
 
 export enum SearchParam {
   width = 'width',
@@ -12,8 +12,66 @@ export enum SearchParam {
 }
 
 export const THEME_CLASSES: ThemeClasses = {
+  hyper: 'Hyper',
+  oceanic: 'Oceanic',
+  cottonCandy: 'Cotton Candy',
+  gotham: 'Gotham',
+  blueSteel: 'Blue Steel',
+  hawaii: 'Hawaii',
+  valentine: 'Valentine',
+  witch: 'Witch',
+};
+
+export const THEME_VALUES = {
   hyper: 'bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500',
   oceanic: 'bg-gradient-to-r from-green-300 via-blue-500 to-purple-600',
   cottonCandy: 'bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400',
   gotham: 'bg-gradient-to-r from-gray-700 via-gray-900 to-black',
+  blueSteel: 'bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800',
+  hawaii: 'bg-gradient-to-r from-green-300 via-yellow-300 to-pink-300',
+  valentine: 'bg-gradient-to-r from-red-200 to-red-600',
+  witch: 'bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900',
+};
+
+export const LANGUAGE_CLASSES: LanguagesClasses = {
+  bash: 'Bash',
+  c: 'C',
+  cpp: 'C++',
+  csharp: 'C#',
+  clojure: 'Clojure',
+  crystal: 'Crystal',
+  css: 'CSS',
+  diff: 'Diff',
+  dockerfile: 'Docker',
+  elm: 'Elm',
+  elixir: 'Elixir',
+  erlang: 'Erlang',
+  graphql: 'GraphQL',
+  go: 'Go',
+  haskell: 'Haskell',
+  html: 'HTML',
+  java: 'Java',
+  javascript: 'JavaScript/JSX',
+  json: 'JSON',
+  kotlin: 'Kotlin',
+  lisp: 'Lisp',
+  lua: 'Lua',
+  markdown: 'Markdown',
+  matlab: 'MATLAB/Octave',
+  pascal: 'Pascal',
+  plaintext: 'Plaintext',
+  powershell: 'Powershell',
+  objectivec: 'Objective C',
+  php: 'PHP',
+  python: 'Python',
+  ruby: 'Ruby',
+  rust: 'Rust',
+  scala: 'Scala',
+  scss: 'SCS',
+  sql: 'SQL',
+  swift: 'Swift',
+  toml: 'TOML',
+  typescript: 'TypeScript/TSX',
+  xml: 'XML',
+  yaml: 'YAML',
 };

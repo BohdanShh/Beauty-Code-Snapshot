@@ -7,8 +7,10 @@ import Select from 'src/components/Select';
 
 import { useSettingsBar } from 'src/features/SettingsBar/useSettingsBar';
 import { LANGUAGES, THEMES } from 'src/features/SettingsBar/constants';
+import { LanguagesClasses, ThemeClasses } from 'src/types';
 
 import styles from 'src/features/SettingsBar/styles.module.css';
+import { LANGUAGE_CLASSES, THEME_CLASSES } from 'src/constants';
 
 const SettingsBar: FC = () => {
   const {
@@ -25,7 +27,10 @@ const SettingsBar: FC = () => {
     <div className="fixed bottom-8 left-1/2 flex max-w-[1000px] w-full justify-between border-[1px] border-[#464646] p-7 rounded-lg bg-[#191919] -translate-x-1/2">
       <div className={styles.flexItem}>
         <div className={styles.label}>Theme</div>
-        <Select value={userPreferences.theme} style={{ width: 150 }}>
+        <Select
+          value={THEME_CLASSES[userPreferences.theme as keyof ThemeClasses]}
+          style={{ width: 150 }}
+        >
           {THEMES.map(({ value, text, classNames, id }) => (
             <li className={styles.menuItem} key={id} onClick={() => handleThemeChange(value)}>
               <div className={`w-4 h-4 rounded-full ${classNames}`} />
@@ -58,7 +63,10 @@ const SettingsBar: FC = () => {
       </div>
       <div className={styles.flexItem}>
         <div className={styles.label}>Language</div>
-        <Select value={userPreferences.language} style={{ width: 150 }}>
+        <Select
+          value={LANGUAGE_CLASSES[userPreferences.language as keyof LanguagesClasses]}
+          style={{ width: 150 }}
+        >
           {LANGUAGES.map(({ text, id, value }) => (
             <li className={styles.menuItem} key={id} onClick={() => handleLanguageChange(value)}>
               {text}
