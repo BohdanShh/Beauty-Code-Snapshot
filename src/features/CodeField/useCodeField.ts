@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { CSSProperties, useState } from 'react';
 import { ResizeCallback } from 're-resizable';
 
 import { SearchParam } from 'src/constants';
@@ -23,9 +23,21 @@ export const useCodeField = () => {
 
   const handleResizeStop = (): void => setIsDragging(false);
 
+  const resizeButtonStyles: CSSProperties = {
+    zIndex: 10,
+    top: '50%',
+    width: '1.5rem',
+    height: '1.5rem',
+    transform: 'translate(-50%,-50%)',
+  };
+
   return {
     isDragging,
     userPreferences,
+    minWidth: 520,
+    maxWidth: 920,
+    minHeight: 380,
+    resizeButtonStyles,
     handleResizeStart,
     handleResize,
     handleResizeStop,

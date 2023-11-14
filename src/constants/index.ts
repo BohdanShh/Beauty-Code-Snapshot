@@ -1,4 +1,4 @@
-import { LanguagesClasses, ThemeClasses } from 'src/types';
+import { FontClasses, LanguagesClasses, ThemeClasses } from 'src/types';
 
 export enum SearchParam {
   width = 'width',
@@ -78,4 +78,11 @@ export const LANGUAGE_CLASSES: LanguagesClasses = {
   typescript: 'TypeScript/TSX',
   xml: 'XML',
   yaml: 'YAML',
+};
+
+export const FONT_CLASSES: FontClasses = {
+  hack: 'Hack',
+  consolas: 'Consolas',
+  cascadiaCode: 'Cascadia Code',
+  monoLisa: 'Mono Lisa',
 };

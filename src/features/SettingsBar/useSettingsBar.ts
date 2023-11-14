@@ -27,6 +27,12 @@ export const useSettingsBar = () => {
     userPreferences.setTheme(value);
   };
 
+  const handleFontChange = (value: string): void => {
+    addSearchParam(SearchParam.font, value);
+
+    userPreferences.setFont(value);
+  };
+
   const isActiveButton = (value: number): boolean => value === userPreferences.padding;
 
   const paddingButtons = [
@@ -42,5 +48,6 @@ export const useSettingsBar = () => {
     isActiveButton,
     handleLanguageChange,
     handleThemeChange,
+    handleFontChange,
   };
 };

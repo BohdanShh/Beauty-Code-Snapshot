@@ -11,5 +11,6 @@ export const useGetUserPreferences = () => {
     width: Number(searchParams.get(SearchParam.width)),
     title: searchParams.get(SearchParam.title) as string,
     theme: searchParams.get(SearchParam.theme) as string,
+    font: searchParams.get(SearchParam.font) as string,
   });
 };

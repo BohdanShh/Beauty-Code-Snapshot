@@ -6,11 +6,11 @@ import Switch from 'src/components/Switch';
 import Select from 'src/components/Select';
 
 import { useSettingsBar } from 'src/features/SettingsBar/useSettingsBar';
-import { LANGUAGES, THEMES } from 'src/features/SettingsBar/constants';
-import { LanguagesClasses, ThemeClasses } from 'src/types';
+import { FONTS, LANGUAGES, THEMES } from 'src/features/SettingsBar/constants';
+import { FontClasses, LanguagesClasses, ThemeClasses } from 'src/types';
 
 import styles from 'src/features/SettingsBar/styles.module.css';
-import { LANGUAGE_CLASSES, THEME_CLASSES } from 'src/constants';
+import { FONT_CLASSES, LANGUAGE_CLASSES, THEME_CLASSES } from 'src/constants';
 
 const SettingsBar: FC = () => {
   const {
@@ -19,10 +19,11 @@ const SettingsBar: FC = () => {
     isActiveButton,
     handleLanguageChange,
     handleThemeChange,
+    handleFontChange,
   } = useSettingsBar();
 
   return (
-    <div className="fixed bottom-8 left-1/2 flex max-w-[1000px] w-full justify-between border-[1px] border-[#464646] p-7 rounded-lg bg-[#191919] -translate-x-1/2">
+    <div className="fixed bottom-8 left-1/2 flex max-w-[1100px] w-full justify-between border-[1px] border-[#464646] p-7 rounded-lg bg-[#191919] -translate-x-1/2">
       <div className={styles.flexItem}>
         <div className={styles.label}>Theme</div>
         <Select
@@ -74,9 +75,12 @@ const SettingsBar: FC = () => {
       </div>
       <div className={styles.flexItem}>
         <div className={styles.label}>Font</div>
-        <Select>
-          {LANGUAGES.map(({ value, text, id }) => (
-            <li className={styles.menuItem} key={id} data-value={value}>
+        <Select
+          value={FONT_CLASSES[userPreferences.font as keyof FontClasses]}
+          style={{ width: 150 }}
+        >
+          {FONTS.map(({ value, text, id }) => (
+            <li className={styles.menuItem} key={id} onClick={() => handleFontChange(value)}>
               {text}
             </li>
           ))}

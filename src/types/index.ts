@@ -69,3 +69,10 @@ export type LanguagesClasses = {
   xml: string;
   yaml: string;
 };
+
+export type FontClasses = {
+  hack: string;
+  cascadiaCode: string;
+  consolas: string;
+  monoLisa: string;
+};

@@ -12,39 +12,31 @@ import { THEME_VALUES } from 'src/constants';
 import styles from 'src/features/CodeField/styles.module.css';
 
 const CodeEditor: FC = () => {
-  const { isDragging, userPreferences, handleResizeStart, handleResize, handleResizeStop } =
-    useCodeField();
+  const {
+    isDragging,
+    userPreferences,
+    minWidth,
+    maxWidth,
+    minHeight,
+    resizeButtonStyles,
+    handleResizeStart,
+    handleResize,
+    handleResizeStop,
+  } = useCodeField();
 
   return (
     <Resizable
       enable={{ left: true, right: true }}
       resizeRatio={2}
       handleStyles={{
-        left: {
-          left: '0',
-          zIndex: 10,
-          top: '50%',
-          width: '1.5rem',
-          height: '1.5rem',
-          transform: 'translate(-50%,-50%)',
-        },
-        right: {
-          right: '0',
-          zIndex: 10,
-          top: '50%',
-          width: '1.5rem',
-          height: '1.5rem',
-          transform: 'translate(50%,-50%)',
-        },
+        left: { left: 0, ...resizeButtonStyles },
+        right: { right: 0, ...resizeButtonStyles },
       }}
-      handleClasses={{
-        left: styles.resizeBtn,
-        right: styles.resizeBtn,
-      }}
-      defaultSize={{ width: userPreferences.width || 520, height: 380 }}
-      minWidth={520}
-      maxWidth={920}
-      minHeight={380}
+      handleClasses={{ left: styles.resizeBtn, right: styles.resizeBtn }}
+      defaultSize={{ width: userPreferences.width || minWidth, height: minHeight }}
+      minWidth={minWidth}
+      maxWidth={maxWidth}
+      minHeight={minHeight}
       onResizeStart={handleResizeStart}
       onResize={handleResize}
       onResizeStop={handleResizeStop}
@@ -54,14 +46,12 @@ const CodeEditor: FC = () => {
           className={`h-full transition-all duration-200 ${
             THEME_VALUES?.[userPreferences.theme as keyof ThemeClasses]
           }`}
-          style={{
-            padding: userPreferences.padding,
-          }}
+          style={{ padding: userPreferences.padding }}
         >
           <Editor />
         </div>
         <div
-          className={`text-center text-[#8b8b8b] transition-all duration-200  ${
+          className={`absolute top-[105%] w-full text-center text-[#8b8b8b] transition-all duration-200 ${
             isDragging ? 'opacity-100 visible' : 'opacity-0 invisible'
           }`}
         >

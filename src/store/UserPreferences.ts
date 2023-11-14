@@ -7,6 +7,7 @@ export class UserPreferences {
   public width;
   public title;
   public theme;
+  public font;
 
   constructor({
     background,
@@ -24,6 +25,7 @@ export class UserPreferences {
     this.width = width || 520;
     this.title = title || 'Untitled-1';
     this.theme = theme || 'hyper';
+    this.font = font || 'hack';
   }
 
   setPadding(value: number): void {
@@ -44,5 +46,9 @@ export class UserPreferences {
 
   setTheme(value: string): void {
     this.theme = value;
+  }
+
+  setFont(value: string): void {
+    this.font = value;
   }
 }
