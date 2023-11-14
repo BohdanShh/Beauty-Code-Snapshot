@@ -5,6 +5,8 @@ import { FC } from 'react';
 import Editor from 'src/features/Editor';
 
 import { useCodeField } from 'src/features/CodeField/useCodeField';
+import { ThemeClasses } from 'src/types';
+import { THEME_CLASSES } from 'src/constants';
 
 const CodeEditor: FC = () => {
   const { isDragging, userPreferences, handleMouseDown, handleMouseMove, handleMouseUp } =
@@ -13,7 +15,7 @@ const CodeEditor: FC = () => {
   return (
     <div className=" relative flex flex-col gap-3">
       <div
-        className="h-[380px] bg-[red]"
+        className={`"h-[380px] ${THEME_CLASSES?.[userPreferences.theme as keyof ThemeClasses]}`}
         style={{
           width: `${userPreferences.width}px`,
           padding: userPreferences.padding,

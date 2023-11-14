@@ -37,7 +37,7 @@ const Select: FC<SelectProps> = ({ value, style, children }) => {
         </div>
       </div>
       {isOpen && (
-        <ul className="absolute left-0 bottom-[120%] max-h-80 p-1 overflow-y-auto overflow-x-hidden border-[1px] border-[#464646] rounded-lg text-sm bg-[#191919] text-[#8b8b8b] scrollbar-track-transparent">
+        <ul className="absolute left-0 bottom-[120%] max-h-80 w-full p-1 overflow-y-auto overflow-x-hidden border-[1px] border-[#464646] rounded-lg text-sm bg-[#191919] text-[#8b8b8b] scrollbar-track-transparent">
           {children}
         </ul>
       )}

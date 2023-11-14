@@ -1,9 +1,37 @@
-export const THEMES = [];
+import { THEME_CLASSES } from 'src/constants';
+import { ThemeClasses } from 'src/types';
+
+export const THEMES = [
+  {
+    value: 'hyper',
+    text: 'Hyper',
+    classNames: THEME_CLASSES['hyper' as keyof ThemeClasses],
+    id: '1',
+  },
+  {
+    value: 'oceanic',
+    text: 'Oceanic',
+    classNames: THEME_CLASSES['oceanic' as keyof ThemeClasses],
+    id: '2',
+  },
+  {
+    value: 'cottonCandy',
+    text: 'Cotton Candy',
+    classNames: THEME_CLASSES['cottonCandy' as keyof ThemeClasses],
+    id: '3',
+  },
+  {
+    value: 'gotham',
+    text: 'Gotham',
+    classNames: THEME_CLASSES['gotham' as keyof ThemeClasses],
+    id: '4',
+  },
+];
 
 export const LANGUAGES = [
   { value: 'bash', text: 'Bash', id: '1' },
   { value: 'c', text: 'C', id: '2' },
-  { value: 'c++', text: 'C++', id: '3' },
+  { value: 'cpp', text: 'C++', id: '3' },
   { value: 'csharp', text: 'C#', id: '4' },
   { value: 'clojure', text: 'Clojure', id: '5' },
   { value: 'crystal', text: 'Crystal', id: '6' },

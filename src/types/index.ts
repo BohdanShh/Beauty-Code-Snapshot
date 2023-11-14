@@ -13,3 +13,10 @@ export type UserPreferencesDefaultValues = {
   language?: string;
   title?: string;
 };
+
+export type ThemeClasses = {
+  hyper: string;
+  oceanic: string;
+  cottonCandy: string;
+  gotham: string;
+};

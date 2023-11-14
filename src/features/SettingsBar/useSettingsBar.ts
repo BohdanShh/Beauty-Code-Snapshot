@@ -21,9 +21,13 @@ export const useSettingsBar = () => {
     userPreferences.setLanguage(value);
   };
 
-  const isActiveButton = (value: number): boolean => value === userPreferences.padding;
+  const handleThemeChange = (value: string): void => {
+    addSearchParam(SearchParam.theme, value);
 
-  const isActiveLanguage = (value: string): boolean => value === userPreferences.language;
+    userPreferences.setTheme(value);
+  };
+
+  const isActiveButton = (value: number): boolean => value === userPreferences.padding;
 
   const paddingButtons = [
     { classNames: styles.paddingBtn, value: 16, onClick: handlePaddingChange, id: '1' },
@@ -35,9 +39,8 @@ export const useSettingsBar = () => {
   return {
     paddingButtons,
     userPreferences,
-    handlePaddingChange,
     isActiveButton,
     handleLanguageChange,
-    isActiveLanguage,
+    handleThemeChange,
   };
 };

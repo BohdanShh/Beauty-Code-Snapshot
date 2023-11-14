@@ -10,5 +10,6 @@ export const useGetUserPreferences = () => {
     language: searchParams.get(SearchParam.language) as string,
     width: Number(searchParams.get(SearchParam.width)),
     title: searchParams.get(SearchParam.title) as string,
+    theme: searchParams.get(SearchParam.theme) as string,
   });
 };

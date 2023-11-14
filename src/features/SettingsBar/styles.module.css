@@ -15,5 +15,5 @@
 }
 
 .menuItem {
-  @apply p-1 rounded-lg hover:bg-[#363636];
+  @apply flex items-center justify-between p-1 rounded-lg hover:bg-[#363636];
 }
