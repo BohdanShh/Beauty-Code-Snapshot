@@ -1,0 +1,3 @@
+.resizeBtn {
+  @apply after:absolute after:top-2/4 after:left-2/4 after:w-1.5 after:h-1.5 after:bg-white after:rounded-full after:-translate-x-1/2 after:-translate-y-1/2;
+}
