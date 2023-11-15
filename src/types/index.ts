@@ -5,13 +5,15 @@ export type ReactChildren = {
 };
 
 export type UserPreferencesDefaultValues = {
-  width?: number;
-  padding?: number;
-  background?: boolean;
-  theme?: string;
-  font?: string;
-  language?: string;
-  title?: string;
+  width: number;
+  padding: number;
+  background: boolean;
+  theme: string;
+  font: string;
+  language: string;
+  title: string;
+  code: string;
+  darkMode: boolean;
 };
 
 export type ThemeClasses = {

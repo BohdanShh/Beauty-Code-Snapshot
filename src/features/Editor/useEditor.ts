@@ -10,9 +10,9 @@ export const useEditor = () => {
   const { addSearchParam } = useUrlManager();
   const userPreferences = useGetUserPreferences();
 
-  const handleClick = (): void => setEditMode(true);
+  const handleTitleClick = (): void => setEditMode(true);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+  const handleTitleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const value = event.currentTarget.value;
 
     userPreferences.setTitle(value);
@@ -22,5 +22,18 @@ export const useEditor = () => {
 
   const handleBlur = (): void => setEditMode(false);
 
-  return { editMode, userPreferences, handleClick, handleChange, handleBlur };
+  const handleCodeChange = (value: string): void => {
+    userPreferences.setCode(value);
+
+    addSearchParam(SearchParam.code, btoa(value));
+  };
+
+  return {
+    editMode,
+    userPreferences,
+    handleTitleClick,
+    handleTitleChange,
+    handleBlur,
+    handleCodeChange,
+  };
 };

@@ -1,16 +1,27 @@
 import { FC } from 'react';
-import { FONT_CLASSES } from 'src/constants';
+import CodeEditor from 'react-simple-code-editor';
+import hljs from 'highlight.js';
 
-import styles from 'src/features/Editor/styles.module.css';
+import { FONT_CLASSES } from 'src/constants';
 import { useEditor } from 'src/features/Editor/useEditor';
 import { FontClasses } from 'src/types';
 
+import 'highlight.js/styles/atom-one-dark.css';
+import styles from 'src/features/Editor/styles.module.css';
+
 const Editor: FC = () => {
-  const { editMode, userPreferences, handleClick, handleChange, handleBlur } = useEditor();
+  const {
+    editMode,
+    userPreferences,
+    handleTitleClick,
+    handleTitleChange,
+    handleBlur,
+    handleCodeChange,
+  } = useEditor();
 
   return (
     <div
-      className="relative w-full h-full p-4 rounded-lg border-[1px] border-[#8f8f8f] bg-[#191919c4]"
+      className="relative w-full flex-grow flex flex-col p-4 rounded-lg border-[1px] border-[#8f8f8f] bg-[#191919c4]"
       style={{ fontFamily: FONT_CLASSES[userPreferences.font as keyof FontClasses] }}
     >
       <div>
@@ -26,15 +37,22 @@ const Editor: FC = () => {
             autoFocus
             width="auto"
             value={userPreferences.title}
-            onChange={handleChange}
+            onChange={handleTitleChange}
             onBlur={handleBlur}
           />
         ) : (
-          <p className={styles.titleField} onClick={handleClick}>
+          <p className={styles.titleField} onClick={handleTitleClick}>
             {userPreferences.title}
           </p>
         )}
       </div>
+      <CodeEditor
+        className={styles.codeEditor}
+        value={userPreferences.code}
+        onValueChange={(code) => handleCodeChange(code)}
+        highlight={(code) => hljs.highlight(code, { language: userPreferences.language }).value}
+        padding={10}
+      />
     </div>
   );
 };

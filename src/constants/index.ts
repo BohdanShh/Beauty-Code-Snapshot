@@ -9,6 +9,7 @@ export enum SearchParam {
   language = 'language',
   font = 'font',
   title = 'title',
+  code = 'code',
 }
 
 export const THEME_CLASSES: ThemeClasses = {

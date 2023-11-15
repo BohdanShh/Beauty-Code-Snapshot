@@ -28,12 +28,12 @@ const CodeEditor: FC = () => {
     <Resizable
       enable={{ left: true, right: true }}
       resizeRatio={2}
+      className="relative flex flex-col"
       handleStyles={{
-        left: { left: 0, ...resizeButtonStyles },
-        right: { right: 0, ...resizeButtonStyles },
+        left: { left: 0, transform: 'translateX(-50%)', ...resizeButtonStyles },
+        right: { right: 0, transform: 'translateX(50%)', ...resizeButtonStyles },
       }}
       handleClasses={{ left: styles.resizeBtn, right: styles.resizeBtn }}
-      defaultSize={{ width: userPreferences.width || minWidth, height: minHeight }}
       minWidth={minWidth}
       maxWidth={maxWidth}
       minHeight={minHeight}
@@ -41,9 +41,9 @@ const CodeEditor: FC = () => {
       onResize={handleResize}
       onResizeStop={handleResizeStop}
     >
-      <div className="relative h-full flex flex-col gap-3">
+      <div className="relative flex-grow flex flex-col gap-3">
         <div
-          className={`h-full transition-all duration-200 ${
+          className={`flex-grow flex flex-col transition-all duration-200 ${
             THEME_VALUES?.[userPreferences.theme as keyof ThemeClasses]
           }`}
           style={{ padding: userPreferences.padding }}

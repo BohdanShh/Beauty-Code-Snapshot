@@ -8,6 +8,8 @@ export class UserPreferences {
   public title;
   public theme;
   public font;
+  public code;
+  public darkMode;
 
   constructor({
     background,
@@ -17,15 +19,19 @@ export class UserPreferences {
     theme,
     width,
     title,
+    code,
+    darkMode,
   }: UserPreferencesDefaultValues) {
     makeAutoObservable(this);
 
-    this.padding = padding || 64;
-    this.language = language || 'javascript';
-    this.width = width || 520;
-    this.title = title || 'Untitled-1';
-    this.theme = theme || 'hyper';
-    this.font = font || 'hack';
+    this.padding = padding;
+    this.language = language;
+    this.width = width;
+    this.title = title;
+    this.theme = theme;
+    this.font = font;
+    this.code = code;
+    this.darkMode = darkMode;
   }
 
   setPadding(value: number): void {
@@ -50,5 +56,8 @@ export class UserPreferences {
 
   setFont(value: string): void {
     this.font = value;
+  }
+  setCode(value: string): void {
+    this.code = value;
   }
 }
