@@ -5,22 +5,22 @@ import { useGetUserPreferences } from 'src/hooks/useGetUserPreferences';
 import { useUrlManager } from 'src/hooks/useUrlManager';
 
 export const useEditor = () => {
-  const [editMode, setEditMode] = useState<boolean>(false);
+  const [editTitleModeEnabled, setEditTitleModeEnabled] = useState<boolean>(false);
 
   const { addSearchParam } = useUrlManager();
   const userPreferences = useGetUserPreferences();
 
-  const handleTitleClick = (): void => setEditMode(true);
+  const handleTitleClick = (): void => setEditTitleModeEnabled(true);
 
   const handleTitleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    const value = event.currentTarget.value;
+    let { value } = event.currentTarget;
 
     userPreferences.setTitle(value);
 
     addSearchParam(SearchParam.title, value);
   };
 
-  const handleBlur = (): void => setEditMode(false);
+  const handleBlur = (): void => setEditTitleModeEnabled(false);
 
   const handleCodeChange = (value: string): void => {
     userPreferences.setCode(value);
@@ -29,7 +29,7 @@ export const useEditor = () => {
   };
 
   return {
-    editMode,
+    editTitleModeEnabled,
     userPreferences,
     handleTitleClick,
     handleTitleChange,

@@ -17,9 +17,9 @@ const Home: NextPage = () => {
       <CodeField />
       <SettingsBar />
       <div
-        className={`fixed bottom-0 left-1/2 w-[300px] h-[50px] rounded-full ${
+        className={`fixed top-0 right-0 w-[500px] h-[500px] rounded-full ${
           THEME_VALUES[userPreferences.theme as keyof ThemeClasses]
-        } blur-[100px] -translate-x-1/2 translate-y-1/2`}
+        } blur-[250px] translate-x-1/2 -translate-y-1/2`}
       />
     </div>
   );

@@ -11,7 +11,7 @@ import styles from 'src/features/Editor/styles.module.css';
 
 const Editor: FC = () => {
   const {
-    editMode,
+    editTitleModeEnabled,
     userPreferences,
     handleTitleClick,
     handleTitleChange,
@@ -25,17 +25,16 @@ const Editor: FC = () => {
       style={{ fontFamily: FONT_CLASSES[userPreferences.font as keyof FontClasses] }}
     >
       <div>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2">
           <div className={`${styles.circle} bg-[#ff605c]`} />
           <div className={`${styles.circle} bg-[#ffbd44]`} />
           <div className={`${styles.circle} bg-[#00ca4e]`} />
         </div>
-        {editMode ? (
+        {editTitleModeEnabled ? (
           <input
             className={`${styles.titleField} outline-none bg-transparent`}
             type="text"
             autoFocus
-            width="auto"
             value={userPreferences.title}
             onChange={handleTitleChange}
             onBlur={handleBlur}
