@@ -7,7 +7,7 @@ import Editor from 'src/features/Editor';
 
 import { useCodeField } from 'src/features/CodeField/useCodeField';
 import { ThemeClasses } from 'src/types';
-import { THEME_VALUES } from 'src/constants';
+import { THEMES } from 'src/constants';
 
 import styles from 'src/features/CodeField/styles.module.css';
 
@@ -43,8 +43,8 @@ const CodeEditor: FC = () => {
     >
       <div className="relative flex-grow flex flex-col gap-3">
         <div
-          className={`flex-grow flex flex-col transition-all duration-200 ${
-            THEME_VALUES?.[userPreferences.theme as keyof ThemeClasses]
+          className={`flex-grow flex flex-col rounded-lg transition-all duration-200 ${
+            THEMES?.[userPreferences.theme as keyof ThemeClasses].background
           }`}
           style={{ padding: userPreferences.padding }}
         >

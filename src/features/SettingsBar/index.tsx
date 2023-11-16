@@ -1,16 +1,22 @@
 'use client';
 
 import { FC } from 'react';
-
-import Switch from 'src/components/Switch';
-import Select from 'src/components/Select';
+import { Switch } from 'src/components/ui/switch';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from 'src/components/ui/select';
 
 import { useSettingsBar } from 'src/features/SettingsBar/useSettingsBar';
-import { FONTS, LANGUAGES, THEMES } from 'src/features/SettingsBar/constants';
+import { FONTS, LANGUAGES } from 'src/features/SettingsBar/constants';
 import { FontClasses, LanguagesClasses, ThemeClasses } from 'src/types';
 
 import styles from 'src/features/SettingsBar/styles.module.css';
-import { FONT_CLASSES, LANGUAGE_CLASSES, THEME_CLASSES } from 'src/constants';
+import { FONT_CLASSES, LANGUAGE_CLASSES, THEMES } from 'src/constants';
 
 const SettingsBar: FC = () => {
   const {
@@ -20,35 +26,53 @@ const SettingsBar: FC = () => {
     handleLanguageChange,
     handleThemeChange,
     handleFontChange,
+    handleDarkModeChange,
   } = useSettingsBar();
 
   return (
-    <div className="fixed bottom-8 left-1/2 flex max-w-[1100px] w-full justify-between border-[1px] border-[#464646] p-7 rounded-lg bg-[#191919] -translate-x-1/2">
+    <div className="fixed left-8 top-8 flex flex-col gap-5 max-w-[300px] w-full border-[1px] border-[#464646] p-7 rounded-lg bg-[#191919]">
       <div className={styles.flexItem}>
         <div className={styles.label}>Theme</div>
-        <Select
-          value={THEME_CLASSES[userPreferences.theme as keyof ThemeClasses]}
-          style={{ width: 150 }}
-        >
-          {THEMES.map(({ value, text, classNames, id }) => (
-            <li className={styles.menuItem} key={id} onClick={() => handleThemeChange(value)}>
-              <div className={`w-4 h-4 rounded-full ${classNames}`} />
-              <div>{text}</div>
-            </li>
-          ))}
+        <Select onValueChange={handleThemeChange}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue
+              placeholder={
+                <div className={styles.menuItem}>
+                  <div
+                    className={`w-4 h-4 rounded-full ${
+                      THEMES[userPreferences.theme as keyof ThemeClasses].background
+                    }`}
+                  />
+                  <div>{THEMES[userPreferences.theme as keyof ThemeClasses].text}</div>
+                </div>
+              }
+            />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              {Object.entries(THEMES).map(([key, { text, background }]) => (
+                <SelectItem value={key} key={text}>
+                  <div className={styles.menuItem}>
+                    <div className={`w-4 h-4 rounded-full ${background}`} />
+                    <div>{text}</div>
+                  </div>
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
         </Select>
       </div>
       <div className={styles.flexItem}>
         <div className={styles.label}>Background</div>
-        <Switch defaultEnabled />
+        <Switch defaultChecked />
       </div>
       <div className={styles.flexItem}>
         <div className={styles.label}>Dark mode</div>
-        <Switch defaultEnabled />
+        <Switch checked={userPreferences.darkMode} onCheckedChange={handleDarkModeChange} />
       </div>
       <div className={styles.flexItem}>
         <div className={styles.label}>Padding</div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 text-sm">
           {paddingButtons.map(({ classNames, id, value, onClick }) => (
             <button
               className={`${classNames} ${isActiveButton(value) ? styles.active : ''}`}
@@ -62,32 +86,42 @@ const SettingsBar: FC = () => {
       </div>
       <div className={styles.flexItem}>
         <div className={styles.label}>Language</div>
-        <Select
-          value={LANGUAGE_CLASSES[userPreferences.language as keyof LanguagesClasses]}
-          style={{ width: 150 }}
-        >
-          {LANGUAGES.map(({ text, id, value }) => (
-            <li className={styles.menuItem} key={id} onClick={() => handleLanguageChange(value)}>
-              {text}
-            </li>
-          ))}
+        <Select onValueChange={handleLanguageChange}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue
+              placeholder={LANGUAGE_CLASSES[userPreferences.language as keyof LanguagesClasses]}
+            />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              {LANGUAGES.map(({ value, id, text }) => (
+                <SelectItem value={value} key={id}>
+                  {text}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
         </Select>
       </div>
       <div className={styles.flexItem}>
         <div className={styles.label}>Font</div>
-        <Select
-          value={FONT_CLASSES[userPreferences.font as keyof FontClasses]}
-          style={{ width: 150 }}
-        >
-          {FONTS.map(({ value, text, id }) => (
-            <li className={styles.menuItem} key={id} onClick={() => handleFontChange(value)}>
-              {text}
-            </li>
-          ))}
+        <Select onValueChange={handleFontChange}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder={FONT_CLASSES[userPreferences.font as keyof FontClasses]} />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              {FONTS.map(({ value, id, text }) => (
+                <SelectItem value={value} key={id}>
+                  {text}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
         </Select>
       </div>
       <div className={styles.flexItem}>
-        <button className="h-full rounded-lg text-[#ee5e5e] px-4 bg-[#ee5e5e2d] transition-all duration-200 hover:bg-[#ee5e5e54]">
+        <button className="h-full rounded-lg text-[#ee5e5e] p-1 bg-[#ee5e5e2d] transition-all duration-200 hover:bg-[#ee5e5e54]">
           Export
         </button>
       </div>

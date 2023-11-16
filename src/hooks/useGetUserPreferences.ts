@@ -14,7 +14,7 @@ export const useGetUserPreferences = () => {
     title: searchParams.get(SearchParam.title) || 'Untitled-1',
     theme: searchParams.get(SearchParam.theme) || 'hyper',
     font: searchParams.get(SearchParam.font) || 'hack',
-    code: code ? atob(code) : '',
+    code: code ? atob(code) : ' ',
     darkMode: Boolean(searchParams.get(SearchParam.darkMode)) || true,
     background: Boolean(searchParams.get(SearchParam.background)) || true,
   });

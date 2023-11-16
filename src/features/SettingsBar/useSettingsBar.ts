@@ -33,6 +33,12 @@ export const useSettingsBar = () => {
     userPreferences.setFont(value);
   };
 
+  const handleDarkModeChange = (value: boolean): void => {
+    addSearchParam(SearchParam.darkMode, value.toString());
+
+    userPreferences.setDarkMode(value);
+  };
+
   const isActiveButton = (value: number): boolean => value === userPreferences.padding;
 
   const paddingButtons = [
@@ -49,5 +55,6 @@ export const useSettingsBar = () => {
     handleLanguageChange,
     handleThemeChange,
     handleFontChange,
+    handleDarkModeChange,
   };
 };

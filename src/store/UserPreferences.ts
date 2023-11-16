@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+
 import { UserPreferencesDefaultValues } from 'src/types';
 
 export class UserPreferences {
@@ -10,6 +11,7 @@ export class UserPreferences {
   public font;
   public code;
   public darkMode;
+  public background;
 
   constructor({
     background,
@@ -32,6 +34,7 @@ export class UserPreferences {
     this.font = font;
     this.code = code;
     this.darkMode = darkMode;
+    this.background = background;
   }
 
   setPadding(value: number): void {
@@ -57,7 +60,12 @@ export class UserPreferences {
   setFont(value: string): void {
     this.font = value;
   }
+
   setCode(value: string): void {
     this.code = value;
+  }
+
+  setDarkMode(value: boolean): void {
+    this.darkMode = value;
   }
 }

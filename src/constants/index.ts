@@ -12,30 +12,64 @@ export enum SearchParam {
   code = 'code',
 }
 
-export const THEME_CLASSES: ThemeClasses = {
-  hyper: 'Hyper',
-  oceanic: 'Oceanic',
-  cottonCandy: 'Cotton Candy',
-  gotham: 'Gotham',
-  blueSteel: 'Blue Steel',
-  hawaii: 'Hawaii',
-  valentine: 'Valentine',
-  witch: 'Witch',
-  emerald: 'Emerald',
-  blueFlame: 'Blue Flame',
+export const FONT_CLASSES: FontClasses = {
+  hack: 'Hack',
+  consolas: 'Consolas',
+  cascadiaCode: 'Cascadia Code',
+  monoLisa: 'Mono Lisa',
 };
 
-export const THEME_VALUES = {
-  hyper: 'bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500',
-  oceanic: 'bg-gradient-to-br from-green-300 via-blue-500 to-purple-600',
-  cottonCandy: 'bg-gradient-to-br from-pink-300 via-purple-300 to-indigo-400',
-  gotham: 'bg-gradient-to-br from-gray-700 via-gray-900 to-black',
-  blueSteel: 'bg-gradient-to-br from-gray-400 via-gray-600 to-blue-800',
-  hawaii: 'bg-gradient-to-br from-green-300 via-yellow-300 to-pink-300',
-  valentine: 'bg-gradient-to-br from-red-200 to-red-600',
-  witch: 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900',
-  emerald: 'bg-gradient-to-br from-emerald-500 to-lime-600',
-  blueFlame: 'bg-gradient-to-br from-amber-200 via-violet-600 to-sky-900',
+export const THEMES = {
+  hyper: {
+    text: 'Hyper',
+    background: 'bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500',
+    codeTheme: '',
+  },
+  oceanic: {
+    text: 'Oceanic',
+    background: 'bg-gradient-to-br from-green-300 via-blue-500 to-purple-600',
+    codeTheme: '',
+  },
+  cottonCandy: {
+    text: 'Cotton Candy',
+    background: 'bg-gradient-to-br from-pink-300 via-purple-300 to-indigo-400',
+    codeTheme: '',
+  },
+  gotham: {
+    text: 'Gotham',
+    background: 'bg-gradient-to-br from-gray-700 via-gray-900 to-black',
+    codeTheme: '',
+  },
+  blueSteel: {
+    text: 'Blue Steel',
+    background: 'bg-gradient-to-br from-gray-400 via-gray-600 to-blue-800',
+    codeTheme: '',
+  },
+  hawaii: {
+    text: 'Hawaii',
+    background: 'bg-gradient-to-br from-green-300 via-yellow-300 to-pink-300',
+    codeTheme: '',
+  },
+  valentine: {
+    text: 'Valentine',
+    background: 'bg-gradient-to-br from-red-200 to-red-600',
+    codeTheme: '',
+  },
+  witch: {
+    text: 'Witch',
+    background: 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900',
+    codeTheme: '',
+  },
+  emerald: {
+    text: 'Emerald',
+    background: 'bg-gradient-to-br from-emerald-500 to-lime-600',
+    codeTheme: '',
+  },
+  blueFlame: {
+    text: 'Blue Flame',
+    background: 'bg-gradient-to-br from-amber-200 via-violet-600 to-sky-900',
+    codeTheme: '',
+  },
 };
 
 export const LANGUAGE_CLASSES: LanguagesClasses = {
@@ -79,11 +113,4 @@ export const LANGUAGE_CLASSES: LanguagesClasses = {
   typescript: 'TypeScript/TSX',
   xml: 'XML',
   yaml: 'YAML',
-};
-
-export const FONT_CLASSES: FontClasses = {
-  hack: 'Hack',
-  consolas: 'Consolas',
-  cascadiaCode: 'Cascadia Code',
-  monoLisa: 'Mono Lisa',
 };

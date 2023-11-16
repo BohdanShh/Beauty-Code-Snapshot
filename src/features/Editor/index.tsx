@@ -21,8 +21,11 @@ const Editor: FC = () => {
 
   return (
     <div
-      className="relative w-full flex-grow flex flex-col p-4 rounded-lg border-[1px] border-[#8f8f8f] bg-[#191919c4]"
-      style={{ fontFamily: FONT_CLASSES[userPreferences.font as keyof FontClasses] }}
+      className="relative w-full flex-grow flex flex-col p-4 rounded-lg border-[1px] border-[#8f8f8f] bg-[#d1d1d1c4] transition-all duration-200"
+      style={{
+        fontFamily: FONT_CLASSES[userPreferences.font as keyof FontClasses],
+        backgroundColor: userPreferences.darkMode ? '#191919c4' : '#fff',
+      }}
     >
       <div>
         <div className="flex items-center gap-2">
@@ -48,7 +51,7 @@ const Editor: FC = () => {
       <CodeEditor
         className={styles.codeEditor}
         value={userPreferences.code}
-        onValueChange={(code) => handleCodeChange(code)}
+        onValueChange={handleCodeChange}
         highlight={(code) => hljs.highlight(code, { language: userPreferences.language }).value}
         padding={10}
       />

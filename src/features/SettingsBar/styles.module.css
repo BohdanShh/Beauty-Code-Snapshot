@@ -1,5 +1,5 @@
 .label {
-  @apply text-sm text-[#8b8b8b];
+  @apply text-base text-[#8b8b8b];
 }
 
 .flexItem {
@@ -15,5 +15,5 @@
 }
 
 .menuItem {
-  @apply flex items-center justify-between p-1 rounded-lg hover:bg-[#363636];
+  @apply flex items-center justify-between gap-2;
 }

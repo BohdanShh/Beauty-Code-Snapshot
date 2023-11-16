@@ -1,21 +1,26 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import 'src/app/globals.css';
-
+import { ThemeProvider } from 'src/providers/ThemeProvider';
 import { ReactChildren } from 'src/types';
+
+import 'src/app/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Code Snap',
+  title: 'Beauty Code Snapshot',
   description: 'Generate your code',
 };
 
 export default function RootLayout({ children }: ReactChildren) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
