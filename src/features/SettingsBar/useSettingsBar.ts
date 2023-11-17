@@ -39,6 +39,12 @@ export const useSettingsBar = () => {
     userPreferences.setDarkMode(value);
   };
 
+  const handleBackgroundChange = (value: boolean): void => {
+    addSearchParam(SearchParam.background, value.toString());
+
+    userPreferences.setDarkMode(value);
+  };
+
   const isActiveButton = (value: number): boolean => value === userPreferences.padding;
 
   const paddingButtons = [
@@ -56,5 +62,6 @@ export const useSettingsBar = () => {
     handleThemeChange,
     handleFontChange,
     handleDarkModeChange,
+    handleBackgroundChange,
   };
 };

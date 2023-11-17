@@ -2,6 +2,7 @@
 
 import { FC } from 'react';
 import { Switch } from 'src/components/ui/switch';
+
 import {
   Select,
   SelectContent,
@@ -16,7 +17,7 @@ import { FONTS, LANGUAGES } from 'src/features/SettingsBar/constants';
 import { FontClasses, LanguagesClasses, ThemeClasses } from 'src/types';
 
 import styles from 'src/features/SettingsBar/styles.module.css';
-import { FONT_CLASSES, LANGUAGE_CLASSES, THEMES } from 'src/constants';
+import { FONT_CLASSES, LANGUAGE_CLASSES, SearchParam, THEMES } from 'src/constants';
 
 const SettingsBar: FC = () => {
   const {
@@ -27,6 +28,7 @@ const SettingsBar: FC = () => {
     handleThemeChange,
     handleFontChange,
     handleDarkModeChange,
+    handleBackgroundChange,
   } = useSettingsBar();
 
   return (
@@ -64,11 +66,19 @@ const SettingsBar: FC = () => {
       </div>
       <div className={styles.flexItem}>
         <div className={styles.label}>Background</div>
-        <Switch defaultChecked />
+        <Switch
+          defaultChecked
+          checked={userPreferences.background}
+          onCheckedChange={handleBackgroundChange}
+        />
       </div>
       <div className={styles.flexItem}>
         <div className={styles.label}>Dark mode</div>
-        <Switch checked={userPreferences.darkMode} onCheckedChange={handleDarkModeChange} />
+        <Switch
+          defaultChecked
+          checked={userPreferences.darkMode}
+          onCheckedChange={handleDarkModeChange}
+        />
       </div>
       <div className={styles.flexItem}>
         <div className={styles.label}>Padding</div>

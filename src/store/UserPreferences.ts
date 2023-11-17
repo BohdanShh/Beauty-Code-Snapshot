@@ -68,4 +68,8 @@ export class UserPreferences {
   setDarkMode(value: boolean): void {
     this.darkMode = value;
   }
+
+  setBackground(value: boolean): void {
+    this.background = value;
+  }
 }
