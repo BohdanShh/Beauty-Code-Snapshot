@@ -24,7 +24,7 @@ const Editor: FC = () => {
       className="relative w-full flex-grow flex flex-col p-4 rounded-lg border-[1px] border-[#8f8f8f] bg-[#d1d1d1c4] transition-all duration-200"
       style={{
         fontFamily: FONT_CLASSES[userPreferences.font as keyof FontClasses],
-        backgroundColor: userPreferences.darkMode ? '#191919' : '#fff',
+        backgroundColor: userPreferences.darkMode ? '#191919' : '#e9e9e9',
       }}
     >
       <div>

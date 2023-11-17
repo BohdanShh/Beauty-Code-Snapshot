@@ -16,7 +16,6 @@ export const FONT_CLASSES: FontClasses = {
   hack: 'Hack',
   consolas: 'Consolas',
   cascadiaCode: 'Cascadia Code',
-  monoLisa: 'Mono Lisa',
 };
 
 export const THEMES = {
