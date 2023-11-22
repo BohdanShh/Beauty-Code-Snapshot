@@ -1,6 +1,7 @@
 'use client';
 
 import { NextPage } from 'next';
+import { cn } from 'src/lib/utils';
 
 import CodeField from 'src/features/CodeField';
 import SettingsBar from 'src/features/SettingsBar';
@@ -17,9 +18,10 @@ const Home: NextPage = () => {
       <CodeField />
       <SettingsBar />
       <div
-        className={`fixed top-0 right-0 w-[500px] h-[500px] rounded-full ${
+        className={cn(
+          'fixed top-0 right-0 w-[500px] h-[500px] rounded-full blur-[250px] translate-x-1/2 -translate-y-1/2',
           THEMES[userPreferences.theme as keyof ThemeClasses].background
-        } blur-[250px] translate-x-1/2 -translate-y-1/2`}
+        )}
       />
     </div>
   );
