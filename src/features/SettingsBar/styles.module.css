@@ -17,3 +17,7 @@
 .menuItem {
   @apply flex items-center justify-between gap-2;
 }
+
+.btn {
+  @apply h-full rounded-lg text-[#ee5e5e] p-1 bg-[#ee5e5e2d] transition-all duration-200 hover:bg-[#ee5e5e54];
+}

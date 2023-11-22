@@ -1,6 +1,7 @@
 'use client';
 
 import { FC, ForwardedRef, RefObject, forwardRef } from 'react';
+import { Link2Icon, ClipboardIcon } from '@radix-ui/react-icons';
 import { cn } from 'src/lib/utils';
 import { Switch } from 'src/components/ui/switch';
 import {
@@ -150,12 +151,34 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
         />
       </div>
       <div className={styles.flexItem}>
-        <button
-          className="h-full rounded-lg text-[#ee5e5e] p-1 bg-[#ee5e5e2d] transition-all duration-200 hover:bg-[#ee5e5e54]"
-          onClick={handleDownloadCodeImage}
-        >
-          Export
-        </button>
+        <div className="flex gap-3">
+          <button className={cn('flex-grow', styles.btn)} onClick={handleDownloadCodeImage}>
+            Export
+          </button>
+          <button>
+            <Select>
+              <SelectTrigger
+                className={cn('w-8 items-center justify-center border-none', styles.btn)}
+              />
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value="image">
+                    <div className="flex gap-2 items-center">
+                      <ClipboardIcon />
+                      <div>Copy Image</div>
+                    </div>
+                  </SelectItem>
+                  <SelectItem value="url">
+                    <div className="flex gap-2 items-center">
+                      <Link2Icon />
+                      <div>Copy URL</div>
+                    </div>
+                  </SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </button>
+        </div>
       </div>
     </div>
   );
