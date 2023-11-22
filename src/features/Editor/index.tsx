@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import CodeEditor from 'react-simple-code-editor';
 import hljs from 'highlight.js';
+import { cn } from 'src/lib/utils';
 
 import { FONT_CLASSES } from 'src/constants';
 import { useEditor } from 'src/features/Editor/useEditor';
@@ -35,7 +36,7 @@ const Editor: FC = () => {
         </div>
         {editTitleModeEnabled ? (
           <input
-            className={`${styles.titleField} outline-none bg-transparent`}
+            className={cn(styles.titleField, 'outline-none bg-transparent')}
             type="text"
             autoFocus
             value={userPreferences.title}

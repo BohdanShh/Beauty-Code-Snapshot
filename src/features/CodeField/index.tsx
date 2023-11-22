@@ -2,6 +2,7 @@
 
 import { FC } from 'react';
 import { Resizable } from 're-resizable';
+import { cn } from 'src/lib/utils';
 
 import Editor from 'src/features/Editor';
 
@@ -43,19 +44,22 @@ const CodeEditor: FC = () => {
     >
       <div className="relative flex-grow flex flex-col gap-3">
         <div
-          className={`flex-grow flex flex-col rounded-lg transition-[padding] duration-200 ${
+          className={cn(
+            'flex-grow flex flex-col rounded-lg transition-[padding] duration-200',
+            userPreferences.darkMode ? 'brightness-100' : 'text-gray-700 contrast-100',
             userPreferences.background
               ? THEMES?.[userPreferences.theme as keyof ThemeClasses].background
               : styles.emptyBg
-          }`}
+          )}
           style={{ padding: userPreferences.padding }}
         >
           <Editor />
         </div>
         <div
-          className={`absolute top-[105%] w-full text-center text-[#8b8b8b] transition-all duration-200 ${
+          className={cn(
+            'absolute top-[105%] w-full text-center text-[#8b8b8b] transition-all duration-200',
             isDragging ? 'opacity-100 visible' : 'opacity-0 invisible'
-          }`}
+          )}
         >
           {userPreferences.width}px
         </div>

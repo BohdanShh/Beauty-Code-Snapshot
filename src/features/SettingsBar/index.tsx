@@ -1,6 +1,7 @@
 'use client';
 
 import { FC } from 'react';
+import { cn } from 'src/lib/utils';
 import { Switch } from 'src/components/ui/switch';
 import {
   Select,
@@ -17,7 +18,7 @@ import { FONTS, LANGUAGES } from 'src/features/SettingsBar/constants';
 import { FontClasses, LanguagesClasses, ThemeClasses } from 'src/types';
 
 import styles from 'src/features/SettingsBar/styles.module.css';
-import { FONT_CLASSES, LANGUAGE_CLASSES, SearchParam, THEMES } from 'src/constants';
+import { FONT_CLASSES, LANGUAGE_CLASSES, THEMES } from 'src/constants';
 
 const SettingsBar: FC = () => {
   const {
@@ -42,9 +43,10 @@ const SettingsBar: FC = () => {
               placeholder={
                 <div className={styles.menuItem}>
                   <div
-                    className={`w-4 h-4 rounded-full ${
+                    className={cn(
+                      'w-4 h-4 rounded-full',
                       THEMES[userPreferences.theme as keyof ThemeClasses].background
-                    }`}
+                    )}
                   />
                   <div>{THEMES[userPreferences.theme as keyof ThemeClasses].text}</div>
                 </div>
@@ -56,7 +58,7 @@ const SettingsBar: FC = () => {
               {Object.entries(THEMES).map(([key, { text, background }]) => (
                 <SelectItem value={key} key={text}>
                   <div className={styles.menuItem}>
-                    <div className={`w-4 h-4 rounded-full ${background}`} />
+                    <div className={cn('w-4 h-4 rounded-full', background)} />
                     <div>{text}</div>
                   </div>
                 </SelectItem>
@@ -86,7 +88,7 @@ const SettingsBar: FC = () => {
         <div className="flex items-center gap-3 text-sm">
           {paddingButtons.map(({ classNames, id, value, onClick }) => (
             <button
-              className={`${classNames} ${isActiveButton(value) ? styles.active : ''}`}
+              className={cn(classNames, isActiveButton(value) ? styles.active : '')}
               onClick={() => onClick(value)}
               key={id}
             >
