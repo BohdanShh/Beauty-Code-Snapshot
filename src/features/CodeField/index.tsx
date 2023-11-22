@@ -43,7 +43,7 @@ const CodeEditor: FC = () => {
     >
       <div className="relative flex-grow flex flex-col gap-3">
         <div
-          className={`flex-grow flex flex-col rounded-lg transition-all duration-200 ${
+          className={`flex-grow flex flex-col rounded-lg transition-[padding] duration-200 ${
             userPreferences.background
               ? THEMES?.[userPreferences.theme as keyof ThemeClasses].background
               : styles.emptyBg

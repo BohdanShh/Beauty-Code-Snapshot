@@ -54,6 +54,7 @@ const Editor: FC = () => {
         onValueChange={handleCodeChange}
         highlight={(code) => hljs.highlight(code, { language: userPreferences.language }).value}
         padding={10}
+        style={{ fontSize: userPreferences.fontSize }}
       />
     </div>
   );

@@ -1,15 +1,16 @@
 import { FontClasses, LanguagesClasses, ThemeClasses } from 'src/types';
 
 export enum SearchParam {
-  width = 'width',
-  theme = 'theme',
-  background = 'background',
-  darkMode = 'darkMode',
-  padding = 'padding',
-  language = 'language',
-  font = 'font',
-  title = 'title',
-  code = 'code',
+  WIDTH = 'width',
+  THEME = 'theme',
+  BACKGROUND = 'background',
+  DARK_MODE = 'darkMode',
+  PADDING = 'padding',
+  LANGUAGE = 'language',
+  FONT = 'font',
+  TITLE = 'title',
+  CODE = 'code',
+  FONT_SIZE = 'fontSize',
 }
 
 export const FONT_CLASSES: FontClasses = {

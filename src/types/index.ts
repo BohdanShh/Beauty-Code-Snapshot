@@ -14,6 +14,7 @@ export type UserPreferencesDefaultValues = {
   title: string;
   code: string;
   darkMode: boolean;
+  fontSize: number;
 };
 
 export type ThemeClasses = {

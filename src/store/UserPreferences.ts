@@ -12,6 +12,7 @@ export class UserPreferences {
   public code;
   public darkMode;
   public background;
+  public fontSize;
 
   constructor({
     background,
@@ -23,6 +24,7 @@ export class UserPreferences {
     title,
     code,
     darkMode,
+    fontSize,
   }: UserPreferencesDefaultValues) {
     makeAutoObservable(this);
 
@@ -35,6 +37,7 @@ export class UserPreferences {
     this.code = code;
     this.darkMode = darkMode;
     this.background = background;
+    this.fontSize = fontSize;
   }
 
   setPadding(value: number): void {
@@ -71,5 +74,9 @@ export class UserPreferences {
 
   setBackground(value: boolean): void {
     this.background = value;
+  }
+
+  setFontSize(value: number): void {
+    this.fontSize = value;
   }
 }

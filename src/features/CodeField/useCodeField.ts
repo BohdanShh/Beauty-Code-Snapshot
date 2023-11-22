@@ -16,7 +16,7 @@ export const useCodeField = () => {
   };
 
   const handleResize: ResizeCallback = (event, direction, ref, delta): void => {
-    addSearchParam(SearchParam.width, ref.clientWidth.toString());
+    addSearchParam(SearchParam.WIDTH, ref.clientWidth.toString());
 
     userPreferences.setWidth(ref.clientWidth);
   };

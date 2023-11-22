@@ -17,7 +17,7 @@ export const useEditor = () => {
 
     userPreferences.setTitle(value);
 
-    addSearchParam(SearchParam.title, value);
+    addSearchParam(SearchParam.TITLE, value);
   };
 
   const handleBlur = (): void => setEditTitleModeEnabled(false);
@@ -25,7 +25,7 @@ export const useEditor = () => {
   const handleCodeChange = (value: string): void => {
     userPreferences.setCode(value);
 
-    addSearchParam(SearchParam.code, btoa(value));
+    addSearchParam(SearchParam.CODE, btoa(value));
   };
 
   return {

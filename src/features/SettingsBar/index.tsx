@@ -2,7 +2,6 @@
 
 import { FC } from 'react';
 import { Switch } from 'src/components/ui/switch';
-
 import {
   Select,
   SelectContent,
@@ -11,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from 'src/components/ui/select';
+import { Input } from 'src/components/ui/input';
 
 import { useSettingsBar } from 'src/features/SettingsBar/useSettingsBar';
 import { FONTS, LANGUAGES } from 'src/features/SettingsBar/constants';
@@ -29,6 +29,7 @@ const SettingsBar: FC = () => {
     handleFontChange,
     handleDarkModeChange,
     handleBackgroundChange,
+    handleFontSizeChange,
   } = useSettingsBar();
 
   return (
@@ -129,6 +130,17 @@ const SettingsBar: FC = () => {
             </SelectGroup>
           </SelectContent>
         </Select>
+      </div>
+      <div className={styles.flexItem}>
+        <div className={styles.label}>Font size</div>
+        <Input
+          className="w-[180px]"
+          type="number"
+          min={12}
+          max={24}
+          value={userPreferences.fontSize}
+          onChange={handleFontSizeChange}
+        />
       </div>
       <div className={styles.flexItem}>
         <button className="h-full rounded-lg text-[#ee5e5e] p-1 bg-[#ee5e5e2d] transition-all duration-200 hover:bg-[#ee5e5e54]">
