@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, ForwardedRef, RefObject, forwardRef } from 'react';
 import { cn } from 'src/lib/utils';
 import { Switch } from 'src/components/ui/switch';
 import {
@@ -20,7 +20,11 @@ import { FontClasses, LanguagesClasses, ThemeClasses } from 'src/types';
 import styles from 'src/features/SettingsBar/styles.module.css';
 import { FONT_CLASSES, LANGUAGE_CLASSES, THEMES } from 'src/constants';
 
-const SettingsBar: FC = () => {
+type SettingsBarProps = {
+  ref?: ForwardedRef<HTMLDivElement>;
+};
+
+const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
   const {
     paddingButtons,
     userPreferences,
@@ -31,7 +35,8 @@ const SettingsBar: FC = () => {
     handleDarkModeChange,
     handleBackgroundChange,
     handleFontSizeChange,
-  } = useSettingsBar();
+    handleDownloadCodeImage,
+  } = useSettingsBar(ref as RefObject<HTMLDivElement>);
 
   return (
     <div className="fixed left-8 top-8 flex flex-col gap-5 max-w-[300px] w-full border-[1px] border-[#464646] p-7 rounded-lg bg-[#191919]">
@@ -145,12 +150,17 @@ const SettingsBar: FC = () => {
         />
       </div>
       <div className={styles.flexItem}>
-        <button className="h-full rounded-lg text-[#ee5e5e] p-1 bg-[#ee5e5e2d] transition-all duration-200 hover:bg-[#ee5e5e54]">
+        <button
+          className="h-full rounded-lg text-[#ee5e5e] p-1 bg-[#ee5e5e2d] transition-all duration-200 hover:bg-[#ee5e5e54]"
+          onClick={handleDownloadCodeImage}
+        >
           Export
         </button>
       </div>
     </div>
   );
-};
+});
+
+SettingsBar.displayName = 'SettingsBar';
 
 export default SettingsBar;

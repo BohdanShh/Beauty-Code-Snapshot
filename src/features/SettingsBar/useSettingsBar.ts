@@ -1,12 +1,14 @@
+import { ChangeEvent, RefObject, useCallback } from 'react';
+import { toPng } from 'html-to-image';
+
 import { SearchParam } from 'src/constants';
 
 import { useUrlManager } from 'src/hooks/useUrlManager';
 import { useGetUserPreferences } from 'src/hooks/useGetUserPreferences';
 
 import styles from 'src/features/SettingsBar/styles.module.css';
-import { ChangeEvent } from 'react';
 
-export const useSettingsBar = () => {
+export const useSettingsBar = (ref: RefObject<HTMLDivElement>) => {
   const { addSearchParam } = useUrlManager();
   const userPreferences = useGetUserPreferences();
 
@@ -54,6 +56,20 @@ export const useSettingsBar = () => {
     userPreferences.setFontSize(Number(targetValue));
   };
 
+  const handleDownloadCodeImage = useCallback((): void => {
+    if (!ref.current) return;
+
+    toPng(ref.current, { cacheBust: true })
+      .then((dataUrl) => {
+        const link = document.createElement('a');
+
+        link.download = `${userPreferences.title}.png`;
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch(console.log);
+  }, [ref, userPreferences.title]);
+
   const isActiveButton = (value: number): boolean => value === userPreferences.padding;
 
   const paddingButtons = [
@@ -73,5 +89,6 @@ export const useSettingsBar = () => {
     handleDarkModeChange,
     handleBackgroundChange,
     handleFontSizeChange,
+    handleDownloadCodeImage,
   };
 };

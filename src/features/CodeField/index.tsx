@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, ForwardedRef, forwardRef } from 'react';
 import { Resizable } from 're-resizable';
 import { cn } from 'src/lib/utils';
 
@@ -12,7 +12,11 @@ import { THEMES } from 'src/constants';
 
 import styles from 'src/features/CodeField/styles.module.css';
 
-const CodeEditor: FC = () => {
+type CodeEditorProps = {
+  ref?: ForwardedRef<HTMLDivElement>;
+};
+
+const CodeEditor: FC<CodeEditorProps> = forwardRef((_, ref) => {
   const {
     isDragging,
     userPreferences,
@@ -42,7 +46,7 @@ const CodeEditor: FC = () => {
       onResize={handleResize}
       onResizeStop={handleResizeStop}
     >
-      <div className="relative flex-grow flex flex-col gap-3">
+      <div className="relative flex-grow flex flex-col gap-3" ref={ref}>
         <div
           className={cn(
             'flex-grow flex flex-col rounded-lg transition-[padding] duration-200',
@@ -66,6 +70,8 @@ const CodeEditor: FC = () => {
       </div>
     </Resizable>
   );
-};
+});
+
+CodeEditor.displayName = 'CodeEditor';
 
 export default CodeEditor;
