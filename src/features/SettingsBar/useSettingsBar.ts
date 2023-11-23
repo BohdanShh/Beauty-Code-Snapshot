@@ -61,7 +61,7 @@ export const useSettingsBar = (ref: RefObject<HTMLDivElement>) => {
   const handleDownloadCodeAsImage = (): void => {
     if (!ref.current) return;
 
-    toPng(ref.current)
+    toPng(ref.current, { cacheBust: true })
       .then((dataUrl) => {
         const link = document.createElement('a');
 
@@ -78,7 +78,7 @@ export const useSettingsBar = (ref: RefObject<HTMLDivElement>) => {
     if (!ref.current) return;
 
     try {
-      const dataUrl = await toBlob(ref.current);
+      const dataUrl = await toBlob(ref.current, { cacheBust: true });
 
       if (!dataUrl) return;
 
