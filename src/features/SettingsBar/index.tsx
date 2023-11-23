@@ -44,7 +44,8 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
     handleDarkModeChange,
     handleBackgroundChange,
     handleFontSizeChange,
-    handleDownloadCodeImage,
+    handleDownloadCodeAsImage,
+    handleCopyCodeAsImage,
     handleCopyUrl,
   } = useSettingsBar(ref as RefObject<HTMLDivElement>);
 
@@ -154,7 +155,7 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
       </SettingItem>
       <SettingItem>
         <div className="flex gap-3">
-          <button className={cn('flex-grow', styles.btn)} onClick={handleDownloadCodeImage}>
+          <button className={cn('flex-grow', styles.btn)} onClick={handleDownloadCodeAsImage}>
             Export
           </button>
           <div>
@@ -165,7 +166,7 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
                 <ChevronDownIcon />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuItem className="gap-2">
+                <DropdownMenuItem className="gap-2" onClick={handleCopyCodeAsImage}>
                   <ClipboardIcon />
                   <div>Copy Image</div>
                 </DropdownMenuItem>

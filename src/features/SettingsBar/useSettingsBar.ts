@@ -1,5 +1,5 @@
-import { ChangeEvent, RefObject, useCallback } from 'react';
-import { toPng } from 'html-to-image';
+import { ChangeEvent, RefObject } from 'react';
+import { toPng, toBlob } from 'html-to-image';
 
 import { SearchParam } from 'src/constants';
 
@@ -58,7 +58,7 @@ export const useSettingsBar = (ref: RefObject<HTMLDivElement>) => {
     userPreferences.setFontSize(Number(targetValue));
   };
 
-  const handleDownloadCodeImage = useCallback((): void => {
+  const handleDownloadCodeAsImage = (): void => {
     if (!ref.current) return;
 
     toPng(ref.current, { cacheBust: true })
@@ -69,18 +69,47 @@ export const useSettingsBar = (ref: RefObject<HTMLDivElement>) => {
         link.href = dataUrl;
         link.click();
       })
-      .catch(console.log);
-  }, [ref, userPreferences.title]);
-
-  const handleCopyUrl = (): void => {
-    const location = window.location;
-
-    navigator.clipboard
-      .writeText(location.href + location.search)
-      .then(() => toast({ description: 'URL successfully copied!' }))
       .catch(() =>
         toast({ description: 'Something went wrong. Please, try again!', variant: 'destructive' })
       );
+  };
+
+  const handleCopyCodeAsImage = async (): Promise<void> => {
+    if (!ref.current) return;
+
+    try {
+      const dataUrl = await toBlob(ref.current);
+
+      if (!dataUrl) return;
+
+      await navigator.clipboard.write([
+        new ClipboardItem({
+          [dataUrl.type]: dataUrl,
+        }),
+      ]);
+
+      toast({ description: 'Image successfully copied!' });
+    } catch (error) {
+      toast({
+        description: 'Something went wrong. Please, try again!',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  const handleCopyUrl = async (): Promise<void> => {
+    try {
+      const { origin, pathname, search } = window.location;
+
+      await navigator.clipboard.writeText(origin + pathname + search);
+
+      toast({ description: 'URL successfully copied!' });
+    } catch (error) {
+      toast({
+        description: 'Something went wrong. Please, try again!',
+        variant: 'destructive',
+      });
+    }
   };
 
   const isActiveButton = (value: number): boolean => value === userPreferences.padding;
@@ -102,7 +131,8 @@ export const useSettingsBar = (ref: RefObject<HTMLDivElement>) => {
     handleDarkModeChange,
     handleBackgroundChange,
     handleFontSizeChange,
-    handleDownloadCodeImage,
+    handleDownloadCodeAsImage,
+    handleCopyCodeAsImage,
     handleCopyUrl,
   };
 };
