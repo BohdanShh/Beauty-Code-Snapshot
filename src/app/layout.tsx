@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Toaster } from 'src/components/ui/toaster';
 
 import { ThemeProvider } from 'src/providers/ThemeProvider';
 import { ReactChildren } from 'src/types';
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: ReactChildren) {
         <ThemeProvider attribute="class" defaultTheme="dark">
           {children}
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );

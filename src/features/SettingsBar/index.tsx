@@ -1,7 +1,7 @@
 'use client';
 
 import { FC, ForwardedRef, RefObject, forwardRef } from 'react';
-import { Link2Icon, ClipboardIcon } from '@radix-ui/react-icons';
+import { Link2Icon, ClipboardIcon, ChevronDownIcon } from '@radix-ui/react-icons';
 import { cn } from 'src/lib/utils';
 import { Switch } from 'src/components/ui/switch';
 import {
@@ -13,6 +13,14 @@ import {
   SelectValue,
 } from 'src/components/ui/select';
 import { Input } from 'src/components/ui/input';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from 'src/components/ui/dropdown-menu';
+
+import SettingItem from 'src/features/SettingItem';
 
 import { useSettingsBar } from 'src/features/SettingsBar/useSettingsBar';
 import { FONTS, LANGUAGES } from 'src/features/SettingsBar/constants';
@@ -37,12 +45,12 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
     handleBackgroundChange,
     handleFontSizeChange,
     handleDownloadCodeImage,
+    handleCopyUrl,
   } = useSettingsBar(ref as RefObject<HTMLDivElement>);
 
   return (
     <div className="fixed left-8 top-8 flex flex-col gap-5 max-w-[300px] w-full border-[1px] border-[#464646] p-7 rounded-lg bg-[#191919]">
-      <div className={styles.flexItem}>
-        <div className={styles.label}>Theme</div>
+      <SettingItem label="Theme">
         <Select onValueChange={handleThemeChange}>
           <SelectTrigger className="w-[180px]">
             <SelectValue
@@ -72,25 +80,22 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
             </SelectGroup>
           </SelectContent>
         </Select>
-      </div>
-      <div className={styles.flexItem}>
-        <div className={styles.label}>Background</div>
+      </SettingItem>
+      <SettingItem label="Background">
         <Switch
           defaultChecked
           checked={userPreferences.background}
           onCheckedChange={handleBackgroundChange}
         />
-      </div>
-      <div className={styles.flexItem}>
-        <div className={styles.label}>Dark mode</div>
+      </SettingItem>
+      <SettingItem label="Dark mode">
         <Switch
           defaultChecked
           checked={userPreferences.darkMode}
           onCheckedChange={handleDarkModeChange}
         />
-      </div>
-      <div className={styles.flexItem}>
-        <div className={styles.label}>Padding</div>
+      </SettingItem>
+      <SettingItem label="Padding">
         <div className="flex items-center gap-3 text-sm">
           {paddingButtons.map(({ classNames, id, value, onClick }) => (
             <button
@@ -102,9 +107,8 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
             </button>
           ))}
         </div>
-      </div>
-      <div className={styles.flexItem}>
-        <div className={styles.label}>Language</div>
+      </SettingItem>
+      <SettingItem label="Language">
         <Select onValueChange={handleLanguageChange}>
           <SelectTrigger className="w-[180px]">
             <SelectValue
@@ -121,9 +125,8 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
             </SelectGroup>
           </SelectContent>
         </Select>
-      </div>
-      <div className={styles.flexItem}>
-        <div className={styles.label}>Font</div>
+      </SettingItem>
+      <SettingItem label="Font">
         <Select onValueChange={handleFontChange}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder={FONT_CLASSES[userPreferences.font as keyof FontClasses]} />
@@ -138,9 +141,8 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
             </SelectGroup>
           </SelectContent>
         </Select>
-      </div>
-      <div className={styles.flexItem}>
-        <div className={styles.label}>Font size</div>
+      </SettingItem>
+      <SettingItem label="Font size">
         <Input
           className="w-[180px]"
           type="number"
@@ -149,37 +151,33 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
           value={userPreferences.fontSize}
           onChange={handleFontSizeChange}
         />
-      </div>
-      <div className={styles.flexItem}>
+      </SettingItem>
+      <SettingItem>
         <div className="flex gap-3">
           <button className={cn('flex-grow', styles.btn)} onClick={handleDownloadCodeImage}>
             Export
           </button>
-          <button>
-            <Select>
-              <SelectTrigger
-                className={cn('w-8 items-center justify-center border-none', styles.btn)}
-              />
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="image">
-                    <div className="flex gap-2 items-center">
-                      <ClipboardIcon />
-                      <div>Copy Image</div>
-                    </div>
-                  </SelectItem>
-                  <SelectItem value="url">
-                    <div className="flex gap-2 items-center">
-                      <Link2Icon />
-                      <div>Copy URL</div>
-                    </div>
-                  </SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </button>
+          <div>
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                className={cn('w-8 flex items-center justify-center', styles.btn)}
+              >
+                <ChevronDownIcon />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem className="gap-2">
+                  <ClipboardIcon />
+                  <div>Copy Image</div>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="gap-2" onClick={handleCopyUrl}>
+                  <Link2Icon />
+                  <div>Copy URL</div>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
-      </div>
+      </SettingItem>
     </div>
   );
 });

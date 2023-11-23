@@ -5,11 +5,13 @@ import { SearchParam } from 'src/constants';
 
 import { useUrlManager } from 'src/hooks/useUrlManager';
 import { useGetUserPreferences } from 'src/hooks/useGetUserPreferences';
+import { useToast } from 'src/hooks/useToast';
 
 import styles from 'src/features/SettingsBar/styles.module.css';
 
 export const useSettingsBar = (ref: RefObject<HTMLDivElement>) => {
   const { addSearchParam } = useUrlManager();
+  const { toast } = useToast();
   const userPreferences = useGetUserPreferences();
 
   const handlePaddingChange = (value: number): void => {
@@ -70,6 +72,17 @@ export const useSettingsBar = (ref: RefObject<HTMLDivElement>) => {
       .catch(console.log);
   }, [ref, userPreferences.title]);
 
+  const handleCopyUrl = (): void => {
+    const location = window.location;
+
+    navigator.clipboard
+      .writeText(location.href + location.search)
+      .then(() => toast({ description: 'URL successfully copied!' }))
+      .catch(() =>
+        toast({ description: 'Something went wrong. Please, try again!', variant: 'destructive' })
+      );
+  };
+
   const isActiveButton = (value: number): boolean => value === userPreferences.padding;
 
   const paddingButtons = [
@@ -90,5 +103,6 @@ export const useSettingsBar = (ref: RefObject<HTMLDivElement>) => {
     handleBackgroundChange,
     handleFontSizeChange,
     handleDownloadCodeImage,
+    handleCopyUrl,
   };
 };
