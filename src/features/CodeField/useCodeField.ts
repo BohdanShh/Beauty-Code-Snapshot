@@ -24,7 +24,7 @@ export const useCodeField = () => {
   const handleResizeStop = (): void => setIsDragging(false);
 
   const resizeButtonStyles: CSSProperties = {
-    zIndex: 10,
+    zIndex: 99,
     top: '50%',
     width: '1.5rem',
     height: '1.5rem',

@@ -46,11 +46,11 @@ const CodeEditor: FC<CodeEditorProps> = forwardRef((_, ref) => {
       onResize={handleResize}
       onResizeStop={handleResizeStop}
     >
-      <div className="relative flex-grow flex flex-col gap-3" ref={ref}>
+      <div className="relative z-50 flex-grow flex flex-col gap-3" ref={ref}>
         <div
           className={cn(
             'flex-grow flex flex-col rounded-lg transition-[padding] duration-200',
-            userPreferences.darkMode ? 'brightness-100' : 'text-gray-700 contrast-100',
+            userPreferences.darkMode ? 'brightness-100' : 'text-gray-700 contrast-150',
             userPreferences.background
               ? THEMES?.[userPreferences.theme as keyof ThemeClasses].background
               : styles.emptyBg

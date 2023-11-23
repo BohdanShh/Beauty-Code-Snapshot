@@ -2,6 +2,7 @@ import { FC } from 'react';
 import CodeEditor from 'react-simple-code-editor';
 import hljs from 'highlight.js';
 import { cn } from 'src/lib/utils';
+import { Input } from 'src/components/ui/input';
 
 import { FONT_CLASSES } from 'src/constants';
 import { useEditor } from 'src/features/Editor/useEditor';
@@ -22,10 +23,12 @@ const Editor: FC = () => {
 
   return (
     <div
-      className="relative w-full flex-grow flex flex-col p-4 rounded-lg border-[1px] border-[#8f8f8f] bg-[#d1d1d1c4] transition-all duration-200"
+      className={cn(
+        'relative w-full flex-grow flex flex-col p-4 rounded-lg border-[1px] border-[#8f8f8f] bg-[#d1d1d1c4] transition-all duration-200',
+        userPreferences.darkMode ? 'bg-[#191919]' : 'bg-[#e9e9e9]'
+      )}
       style={{
         fontFamily: FONT_CLASSES[userPreferences.font as keyof FontClasses],
-        backgroundColor: userPreferences.darkMode ? '#191919' : '#e9e9e9',
       }}
     >
       <div>
@@ -35,7 +38,7 @@ const Editor: FC = () => {
           <div className={`${styles.circle} bg-[#00ca4e]`} />
         </div>
         {editTitleModeEnabled ? (
-          <input
+          <Input
             className={cn(styles.titleField, 'outline-none bg-transparent')}
             type="text"
             autoFocus
