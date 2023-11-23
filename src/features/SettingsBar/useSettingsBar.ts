@@ -61,7 +61,7 @@ export const useSettingsBar = (ref: RefObject<HTMLDivElement>) => {
   const handleDownloadCodeAsImage = (): void => {
     if (!ref.current) return;
 
-    toPng(ref.current, { cacheBust: true })
+    toPng(ref.current)
       .then((dataUrl) => {
         const link = document.createElement('a');
 
