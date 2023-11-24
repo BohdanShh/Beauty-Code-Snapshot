@@ -58,20 +58,21 @@ export const useSettingsBar = (ref: RefObject<HTMLDivElement>) => {
     userPreferences.setFontSize(Number(targetValue));
   };
 
-  const handleDownloadCodeAsImage = (): void => {
+  const handleDownloadCodeAsImage = async (): Promise<void> => {
     if (!ref.current) return;
 
-    toPng(ref.current, { cacheBust: true })
-      .then((dataUrl) => {
-        const link = document.createElement('a');
+    try {
+      ref.current.style.background = 'transparent';
+      const dataUrl = await toPng(ref.current, { cacheBust: true });
 
-        link.download = `${userPreferences.title}.png`;
-        link.href = dataUrl;
-        link.click();
-      })
-      .catch(() =>
-        toast({ description: 'Something went wrong. Please, try again!', variant: 'destructive' })
-      );
+      const link = document.createElement('a');
+
+      link.download = `${userPreferences.title}.png`;
+      link.href = dataUrl;
+      link.click();
+    } catch (error) {
+      toast({ description: 'Something went wrong. Please, try again!', variant: 'destructive' });
+    }
   };
 
   const handleCopyCodeAsImage = async (): Promise<void> => {

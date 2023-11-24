@@ -46,26 +46,32 @@ const CodeEditor: FC<CodeEditorProps> = forwardRef((_, ref) => {
       onResize={handleResize}
       onResizeStop={handleResizeStop}
     >
-      <div className="relative z-50 flex-grow flex flex-col gap-3" ref={ref}>
-        <div
-          className={cn(
-            'flex-grow flex flex-col rounded-lg transition-[padding] duration-200',
-            userPreferences.darkMode ? 'brightness-100' : 'text-gray-700 contrast-150',
-            userPreferences.background
-              ? THEMES?.[userPreferences.theme as keyof ThemeClasses].background
-              : styles.emptyBg
-          )}
-          style={{ padding: userPreferences.padding }}
-        >
-          <Editor />
-        </div>
-        <div
-          className={cn(
-            'absolute top-[105%] w-full text-center text-[#8b8b8b] transition-all duration-200',
-            isDragging ? 'opacity-100 visible' : 'opacity-0 invisible'
-          )}
-        >
-          {userPreferences.width}px
+      <div
+        className={cn(
+          'relative z-50 flex-grow flex flex-col gap-3',
+          !userPreferences.background && styles.emptyBg
+        )}
+      >
+        <div className="flex-grow flex flex-col gap-3" ref={ref}>
+          <div
+            className={cn(
+              'flex-grow flex flex-col rounded-lg transition-[padding] duration-200',
+              userPreferences.darkMode ? 'brightness-100' : 'text-gray-700 contrast-150',
+              userPreferences.background &&
+                THEMES?.[userPreferences.theme as keyof ThemeClasses].background
+            )}
+            style={{ padding: userPreferences.padding }}
+          >
+            <Editor />
+          </div>
+          <div
+            className={cn(
+              'absolute top-[105%] w-full text-center text-[#8b8b8b] transition-all duration-200',
+              isDragging ? 'opacity-100 visible' : 'opacity-0 invisible'
+            )}
+          >
+            {userPreferences.width}px
+          </div>
         </div>
       </div>
     </Resizable>

@@ -1,5 +1,5 @@
 .paddingBtn {
-  @apply p-1 text-[#8b8b8b] transition-all duration-200 cursor-pointer hover:text-white;
+  @apply p-1 text-[#8b8b8b] cursor-pointer hover:text-white;
 }
 
 .active {
