@@ -62,7 +62,6 @@ export const useSettingsBar = (ref: RefObject<HTMLDivElement>) => {
     if (!ref.current) return;
 
     try {
-      ref.current.style.background = 'transparent';
       const dataUrl = await toPng(ref.current, { cacheBust: true });
 
       const link = document.createElement('a');
