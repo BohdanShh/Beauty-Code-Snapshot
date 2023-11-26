@@ -2,7 +2,7 @@
 
 const repo = 'Beauty-Code-Snapshot';
 const assetPrefix = `/${repo}/`;
-const basePath = `/${repo}/`;
+const basePath = `/${repo}`;
 
 const nextConfig = {
   output: 'export',
