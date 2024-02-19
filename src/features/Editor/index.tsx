@@ -32,7 +32,7 @@ const Editor: FC = () => {
       }}
     >
       <div>
-        <div className="flex items-center gap-2">
+        <div className='flex items-center gap-2'>
           <div className={`${styles.circle} bg-[#ff605c]`} />
           <div className={`${styles.circle} bg-[#ffbd44]`} />
           <div className={`${styles.circle} bg-[#00ca4e]`} />
@@ -40,7 +40,7 @@ const Editor: FC = () => {
         {editTitleModeEnabled ? (
           <Input
             className={cn(styles.titleField, 'outline-none bg-transparent')}
-            type="text"
+            type='text'
             autoFocus
             value={userPreferences.title}
             onChange={handleTitleChange}

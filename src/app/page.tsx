@@ -16,7 +16,7 @@ const Home: NextPage = () => {
   const userPreferences = useGetUserPreferences();
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center gap-10">
+    <div className='relative min-h-screen flex flex-col items-center justify-center gap-10'>
       <CodeField ref={codeRef} />
       <SettingsBar ref={codeRef} />
       <div

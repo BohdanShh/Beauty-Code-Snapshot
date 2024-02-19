@@ -50,10 +50,10 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
   } = useSettingsBar(ref as RefObject<HTMLDivElement>);
 
   return (
-    <div className="fixed left-8 top-8 flex flex-col gap-5 max-w-[300px] w-full border-[1px] border-[#464646] p-7 rounded-lg bg-[#191919]">
-      <SettingItem label="Theme">
+    <div className='fixed left-8 top-8 flex flex-col gap-5 max-w-[300px] w-full border-[1px] border-[#464646] p-7 rounded-lg bg-[#191919]'>
+      <SettingItem label='Theme'>
         <Select onValueChange={handleThemeChange}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className='w-[180px]'>
             <SelectValue
               placeholder={
                 <div className={styles.menuItem}>
@@ -82,22 +82,22 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
           </SelectContent>
         </Select>
       </SettingItem>
-      <SettingItem label="Background">
+      <SettingItem label='Background'>
         <Switch
           defaultChecked
           checked={userPreferences.background}
           onCheckedChange={handleBackgroundChange}
         />
       </SettingItem>
-      <SettingItem label="Dark mode">
+      <SettingItem label='Dark mode'>
         <Switch
           defaultChecked
           checked={userPreferences.darkMode}
           onCheckedChange={handleDarkModeChange}
         />
       </SettingItem>
-      <SettingItem label="Padding">
-        <div className="flex items-center gap-3 text-sm">
+      <SettingItem label='Padding'>
+        <div className='flex items-center gap-3 text-sm'>
           {paddingButtons.map(({ classNames, id, value, onClick }) => (
             <button
               className={cn(classNames, isActiveButton(value) ? styles.active : '')}
@@ -109,9 +109,9 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
           ))}
         </div>
       </SettingItem>
-      <SettingItem label="Language">
+      <SettingItem label='Language'>
         <Select onValueChange={handleLanguageChange}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className='w-[180px]'>
             <SelectValue
               placeholder={LANGUAGE_CLASSES[userPreferences.language as keyof LanguagesClasses]}
             />
@@ -127,9 +127,9 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
           </SelectContent>
         </Select>
       </SettingItem>
-      <SettingItem label="Font">
+      <SettingItem label='Font'>
         <Select onValueChange={handleFontChange}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className='w-[180px]'>
             <SelectValue placeholder={FONT_CLASSES[userPreferences.font as keyof FontClasses]} />
           </SelectTrigger>
           <SelectContent>
@@ -143,10 +143,10 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
           </SelectContent>
         </Select>
       </SettingItem>
-      <SettingItem label="Font size">
+      <SettingItem label='Font size'>
         <Input
-          className="w-[180px] flex h-9 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-          type="number"
+          className='w-[180px] flex h-9 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
+          type='number'
           min={12}
           max={24}
           value={userPreferences.fontSize}
@@ -154,7 +154,7 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
         />
       </SettingItem>
       <SettingItem>
-        <div className="flex gap-3">
+        <div className='flex gap-3'>
           <button className={cn('flex-grow', styles.btn)} onClick={handleDownloadCodeAsImage}>
             Export
           </button>
@@ -166,11 +166,11 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
                 <ChevronDownIcon />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuItem className="gap-2" onClick={handleCopyCodeAsImage}>
+                <DropdownMenuItem className='gap-2' onClick={handleCopyCodeAsImage}>
                   <ClipboardIcon />
                   <div>Copy Image</div>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="gap-2" onClick={handleCopyUrl}>
+                <DropdownMenuItem className='gap-2' onClick={handleCopyUrl}>
                   <Link2Icon />
                   <div>Copy URL</div>
                 </DropdownMenuItem>

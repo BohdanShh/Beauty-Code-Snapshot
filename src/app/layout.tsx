@@ -16,9 +16,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: ReactChildren) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark">
+        <ThemeProvider attribute='class' defaultTheme='dark'>
           {children}
         </ThemeProvider>
         <Toaster />
