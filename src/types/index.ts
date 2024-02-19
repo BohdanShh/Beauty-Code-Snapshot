@@ -30,6 +30,25 @@ export type ThemeClasses = {
   blueFlame: string;
 };
 
+export type ThemeItem = {
+  text: string;
+  background: string;
+  codeTheme: string;
+};
+
+export type ThemeCollection = {
+  hyper: ThemeItem;
+  oceanic: ThemeItem;
+  cottonCandy: ThemeItem;
+  gotham: ThemeItem;
+  blueSteel: ThemeItem;
+  hawaii: ThemeItem;
+  valentine: ThemeItem;
+  witch: ThemeItem;
+  emerald: ThemeItem;
+  blueFlame: ThemeItem;
+};
+
 export type LanguagesClasses = {
   bash: string;
   c: string;

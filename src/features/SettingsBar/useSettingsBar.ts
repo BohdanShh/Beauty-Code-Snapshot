@@ -47,7 +47,7 @@ export const useSettingsBar = (ref: RefObject<HTMLDivElement>) => {
   const handleBackgroundChange = (value: boolean): void => {
     addSearchParam(SearchParam.BACKGROUND, value.toString());
 
-    userPreferences.setDarkMode(value);
+    userPreferences.setBackground(value);
   };
 
   const handleFontSizeChange = (event: ChangeEvent<HTMLInputElement>): void => {

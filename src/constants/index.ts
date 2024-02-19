@@ -1,4 +1,4 @@
-import { FontClasses, LanguagesClasses, ThemeClasses } from 'src/types';
+import { FontClasses, LanguagesClasses } from 'src/types';
 
 export enum SearchParam {
   WIDTH = 'width',
@@ -23,52 +23,52 @@ export const THEMES = {
   hyper: {
     text: 'Hyper',
     background: 'bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500',
-    codeTheme: '',
+    codeTheme: 'rainbow',
   },
   oceanic: {
     text: 'Oceanic',
     background: 'bg-gradient-to-br from-green-300 via-blue-500 to-purple-600',
-    codeTheme: '',
+    codeTheme: 'material-darker',
   },
   cottonCandy: {
     text: 'Cotton Candy',
     background: 'bg-gradient-to-br from-pink-300 via-purple-300 to-indigo-400',
-    codeTheme: '',
+    codeTheme: 'chalk',
   },
   gotham: {
     text: 'Gotham',
     background: 'bg-gradient-to-br from-gray-700 via-gray-900 to-black',
-    codeTheme: '',
+    codeTheme: 'hybrid',
   },
   blueSteel: {
     text: 'Blue Steel',
     background: 'bg-gradient-to-br from-gray-400 via-gray-600 to-blue-800',
-    codeTheme: '',
+    codeTheme: 'zenburn',
   },
   hawaii: {
     text: 'Hawaii',
     background: 'bg-gradient-to-br from-green-300 via-yellow-300 to-pink-300',
-    codeTheme: '',
+    codeTheme: 'agate',
   },
   valentine: {
     text: 'Valentine',
     background: 'bg-gradient-to-br from-red-200 to-red-600',
-    codeTheme: '',
+    codeTheme: 'github-dark',
   },
   witch: {
     text: 'Witch',
     background: 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900',
-    codeTheme: '',
+    codeTheme: 'atom-one-dark',
   },
   emerald: {
     text: 'Emerald',
     background: 'bg-gradient-to-br from-emerald-500 to-lime-600',
-    codeTheme: '',
+    codeTheme: 'gradient-dark',
   },
   blueFlame: {
     text: 'Blue Flame',
     background: 'bg-gradient-to-br from-amber-200 via-violet-600 to-sky-900',
-    codeTheme: '',
+    codeTheme: 'ashes',
   },
 };
 

@@ -3,6 +3,7 @@
 import { FC, ForwardedRef, forwardRef } from 'react';
 import { Resizable } from 're-resizable';
 import { cn } from 'src/lib/utils';
+import dynamic from 'next/dynamic';
 
 import Editor from 'src/features/Editor';
 

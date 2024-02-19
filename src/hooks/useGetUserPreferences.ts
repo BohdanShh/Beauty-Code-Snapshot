@@ -11,7 +11,7 @@ export const useGetUserPreferences = () => {
     padding: Number(searchParams.get(SearchParam.PADDING)) || 64,
     language: searchParams.get(SearchParam.LANGUAGE) || 'javascript',
     width: Number(searchParams.get(SearchParam.WIDTH)) || 520,
-    title: searchParams.get(SearchParam.TITLE) || 'Untitled-1',
+    title: searchParams.get(SearchParam.TITLE) as string,
     theme: searchParams.get(SearchParam.THEME) || 'hyper',
     font: searchParams.get(SearchParam.FONT) || 'hack',
     code: code ? atob(code) : '',

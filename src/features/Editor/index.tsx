@@ -1,20 +1,23 @@
+'use client';
+
 import { FC } from 'react';
 import CodeEditor from 'react-simple-code-editor';
 import hljs from 'highlight.js';
+
 import { cn } from 'src/lib/utils';
 import { Input } from 'src/components/ui/input';
-
-import { FONT_CLASSES } from 'src/constants';
+import { THEMES } from 'src/constants';
 import { useEditor } from 'src/features/Editor/useEditor';
-import { FontClasses } from 'src/types';
+import { FontClasses, ThemeCollection } from 'src/types';
 
-import 'highlight.js/styles/atom-one-dark.css';
+import 'src/features/Editor/themes.scss';
 import styles from 'src/features/Editor/styles.module.css';
 
 const Editor: FC = () => {
   const {
     editTitleModeEnabled,
     userPreferences,
+    fonts,
     handleTitleClick,
     handleTitleChange,
     handleBlur,
@@ -25,11 +28,9 @@ const Editor: FC = () => {
     <div
       className={cn(
         'relative w-full flex-grow flex flex-col p-4 rounded-lg border-[1px] border-[#8f8f8f] bg-[#d1d1d1c4] transition-all duration-200',
-        userPreferences.darkMode ? 'bg-[#191919]' : 'bg-[#e9e9e9]'
+        userPreferences.darkMode ? 'bg-[#191919]' : 'bg-[#e9e9e9]',
+        fonts[userPreferences.font as keyof FontClasses].className
       )}
-      style={{
-        fontFamily: FONT_CLASSES[userPreferences.font as keyof FontClasses],
-      }}
     >
       <div>
         <div className='flex items-center gap-2'>
@@ -48,12 +49,16 @@ const Editor: FC = () => {
           />
         ) : (
           <p className={styles.titleField} onClick={handleTitleClick}>
-            {userPreferences.title}
+            {userPreferences.title || 'Untitled-1'}
           </p>
         )}
       </div>
       <CodeEditor
-        className={styles.codeEditor}
+        className={cn(
+          styles.codeEditor,
+          THEMES[userPreferences.theme as keyof ThemeCollection].codeTheme
+        )}
+        placeholder='Write your code here...'
         value={userPreferences.code}
         onValueChange={handleCodeChange}
         highlight={(code) => hljs.highlight(code, { language: userPreferences.language }).value}
