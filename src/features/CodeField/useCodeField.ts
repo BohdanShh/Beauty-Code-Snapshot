@@ -3,11 +3,11 @@ import { ResizeCallback } from 're-resizable';
 
 import { SearchParam } from 'src/constants';
 import { useUrlManager } from 'src/hooks/useUrlManager';
-import { useGetUserPreferences } from 'src/hooks/useGetUserPreferences';
+import { useUserPreferences } from 'src/store/useUserPreferences';
 
 export const useCodeField = () => {
-  const { addSearchParam } = useUrlManager();
-  const userPreferences = useGetUserPreferences();
+  const { searchParams, addSearchParam } = useUrlManager();
+  const userPreferences = useUserPreferences();
 
   const [isDragging, setIsDragging] = useState<boolean>(false);
 
@@ -16,9 +16,9 @@ export const useCodeField = () => {
   };
 
   const handleResize: ResizeCallback = (event, direction, ref, delta): void => {
-    addSearchParam(SearchParam.WIDTH, ref.clientWidth.toString());
-
     userPreferences.setWidth(ref.clientWidth);
+
+    addSearchParam(SearchParam.WIDTH, ref.clientWidth.toString());
   };
 
   const handleResizeStop = (): void => setIsDragging(false);
@@ -37,6 +37,7 @@ export const useCodeField = () => {
     maxWidth: 920,
     minHeight: 380,
     resizeButtonStyles,
+    searchParams,
     handleResizeStart,
     handleResize,
     handleResizeStop,

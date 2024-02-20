@@ -27,7 +27,7 @@ import { FONTS, LANGUAGES } from 'src/features/SettingsBar/constants';
 import { FontClasses, LanguagesClasses, ThemeClasses } from 'src/types';
 
 import styles from 'src/features/SettingsBar/styles.module.css';
-import { FONT_CLASSES, LANGUAGE_CLASSES, THEMES } from 'src/constants';
+import { FONT_CLASSES, LANGUAGE_CLASSES, SearchParam, THEMES } from 'src/constants';
 
 type SettingsBarProps = {
   ref?: ForwardedRef<HTMLDivElement>;
@@ -37,6 +37,7 @@ const SettingsBar: FC<SettingsBarProps> = forwardRef((_, ref) => {
   const {
     paddingButtons,
     userPreferences,
+    searchParams,
     isActiveButton,
     handleLanguageChange,
     handleThemeChange,

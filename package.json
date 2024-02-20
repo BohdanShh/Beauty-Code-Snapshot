@@ -19,18 +19,15 @@
     "clsx": "^2.0.0",
     "highlight.js": "^11.9.0",
     "html-to-image": "^1.11.11",
-    "i": "^0.3.7",
-    "mobx": "^6.11.0",
-    "mobx-react-lite": "^4.0.5",
     "next": "14.0.2",
     "next-themes": "^0.2.1",
-    "npm": "^10.2.3",
     "re-resizable": "^6.9.11",
     "react": "^18",
     "react-dom": "^18",
     "react-simple-code-editor": "^0.13.1",
     "tailwind-merge": "^2.0.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zustand": "^4.5.1"
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^4.41.3",

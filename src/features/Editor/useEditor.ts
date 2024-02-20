@@ -2,8 +2,8 @@ import localFont from 'next/font/local';
 import { ChangeEvent, useState } from 'react';
 
 import { SearchParam } from 'src/constants';
-import { useGetUserPreferences } from 'src/hooks/useGetUserPreferences';
 import { useUrlManager } from 'src/hooks/useUrlManager';
+import { useUserPreferences } from 'src/store/useUserPreferences';
 
 const hack = localFont({ src: '../../assets/fonts/Hack-Regular.ttf' });
 const consolas = localFont({ src: '../../assets/fonts/Consolas-Regular.ttf' });
@@ -12,8 +12,8 @@ const cascadiaCode = localFont({ src: '../../assets/fonts/CascadiaCode-Regular.t
 export const useEditor = () => {
   const [editTitleModeEnabled, setEditTitleModeEnabled] = useState<boolean>(false);
 
-  const { addSearchParam } = useUrlManager();
-  const userPreferences = useGetUserPreferences();
+  const { addSearchParam, searchParams } = useUrlManager();
+  const userPreferences = useUserPreferences();
 
   const fonts = { hack, consolas, cascadiaCode };
 
@@ -39,6 +39,7 @@ export const useEditor = () => {
     editTitleModeEnabled,
     userPreferences,
     fonts,
+    searchParams,
     handleTitleClick,
     handleTitleChange,
     handleBlur,

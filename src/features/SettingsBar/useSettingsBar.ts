@@ -4,58 +4,58 @@ import { toPng, toBlob } from 'html-to-image';
 import { SearchParam } from 'src/constants';
 
 import { useUrlManager } from 'src/hooks/useUrlManager';
-import { useGetUserPreferences } from 'src/hooks/useGetUserPreferences';
+import { useUserPreferences } from 'src/store/useUserPreferences';
 import { useToast } from 'src/hooks/useToast';
 
 import styles from 'src/features/SettingsBar/styles.module.css';
 
 export const useSettingsBar = (ref: RefObject<HTMLDivElement>) => {
-  const { addSearchParam } = useUrlManager();
+  const { searchParams, addSearchParam } = useUrlManager();
   const { toast } = useToast();
-  const userPreferences = useGetUserPreferences();
+  const userPreferences = useUserPreferences();
 
   const handlePaddingChange = (value: number): void => {
-    addSearchParam(SearchParam.PADDING, value.toString());
-
     userPreferences.setPadding(value);
+
+    addSearchParam(SearchParam.PADDING, value.toString());
   };
 
   const handleLanguageChange = (value: string): void => {
-    addSearchParam(SearchParam.LANGUAGE, value);
-
     userPreferences.setLanguage(value);
+
+    addSearchParam(SearchParam.LANGUAGE, value);
   };
 
   const handleThemeChange = (value: string): void => {
-    addSearchParam(SearchParam.THEME, value);
-
     userPreferences.setTheme(value);
+
+    addSearchParam(SearchParam.THEME, value);
   };
 
   const handleFontChange = (value: string): void => {
-    addSearchParam(SearchParam.FONT, value);
-
     userPreferences.setFont(value);
+
+    addSearchParam(SearchParam.FONT, value);
   };
 
   const handleDarkModeChange = (value: boolean): void => {
-    addSearchParam(SearchParam.DARK_MODE, value.toString());
-
     userPreferences.setDarkMode(value);
+
+    addSearchParam(SearchParam.DARK_MODE, value.toString());
   };
 
   const handleBackgroundChange = (value: boolean): void => {
-    addSearchParam(SearchParam.BACKGROUND, value.toString());
-
     userPreferences.setBackground(value);
+
+    addSearchParam(SearchParam.BACKGROUND, value.toString());
   };
 
   const handleFontSizeChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const targetValue = event.currentTarget.value;
 
-    addSearchParam(SearchParam.FONT_SIZE, targetValue);
-
     userPreferences.setFontSize(Number(targetValue));
+
+    addSearchParam(SearchParam.FONT_SIZE, targetValue);
   };
 
   const handleDownloadCodeAsImage = async (): Promise<void> => {
@@ -124,6 +124,7 @@ export const useSettingsBar = (ref: RefObject<HTMLDivElement>) => {
   return {
     paddingButtons,
     userPreferences,
+    searchParams,
     isActiveButton,
     handleLanguageChange,
     handleThemeChange,

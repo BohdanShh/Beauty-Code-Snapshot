@@ -3,13 +3,12 @@
 import { FC, ForwardedRef, forwardRef } from 'react';
 import { Resizable } from 're-resizable';
 import { cn } from 'src/lib/utils';
-import dynamic from 'next/dynamic';
 
 import Editor from 'src/features/Editor';
 
 import { useCodeField } from 'src/features/CodeField/useCodeField';
 import { ThemeClasses } from 'src/types';
-import { THEMES } from 'src/constants';
+import { SearchParam, THEMES } from 'src/constants';
 
 import styles from 'src/features/CodeField/styles.module.css';
 
@@ -25,6 +24,7 @@ const CodeEditor: FC<CodeEditorProps> = forwardRef((_, ref) => {
     maxWidth,
     minHeight,
     resizeButtonStyles,
+    searchParams,
     handleResizeStart,
     handleResize,
     handleResizeStop,
@@ -61,7 +61,9 @@ const CodeEditor: FC<CodeEditorProps> = forwardRef((_, ref) => {
               userPreferences.background &&
                 THEMES?.[userPreferences.theme as keyof ThemeClasses].background
             )}
-            style={{ padding: userPreferences.padding }}
+            style={{
+              padding: userPreferences.padding,
+            }}
           >
             <Editor />
           </div>

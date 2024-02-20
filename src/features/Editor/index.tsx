@@ -6,7 +6,7 @@ import hljs from 'highlight.js';
 
 import { cn } from 'src/lib/utils';
 import { Input } from 'src/components/ui/input';
-import { THEMES } from 'src/constants';
+import { SearchParam, THEMES } from 'src/constants';
 import { useEditor } from 'src/features/Editor/useEditor';
 import { FontClasses, ThemeCollection } from 'src/types';
 
@@ -18,6 +18,7 @@ const Editor: FC = () => {
     editTitleModeEnabled,
     userPreferences,
     fonts,
+    searchParams,
     handleTitleClick,
     handleTitleChange,
     handleBlur,
@@ -49,7 +50,7 @@ const Editor: FC = () => {
           />
         ) : (
           <p className={styles.titleField} onClick={handleTitleClick}>
-            {userPreferences.title || 'Untitled-1'}
+            {userPreferences.title}
           </p>
         )}
       </div>
@@ -63,7 +64,9 @@ const Editor: FC = () => {
         onValueChange={handleCodeChange}
         highlight={(code) => hljs.highlight(code, { language: userPreferences.language }).value}
         padding={10}
-        style={{ fontSize: userPreferences.fontSize }}
+        style={{
+          fontSize: userPreferences.fontSize,
+        }}
       />
     </div>
   );
