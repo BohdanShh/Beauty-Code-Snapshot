@@ -23,25 +23,25 @@ type UserPreferencesStore = {
   setFontSize: (value: number) => void;
 };
 
-export const useUserPreferences = create<UserPreferencesStore>()((set) => ({
+export const useUserPreferences = create<UserPreferencesStore>()(set => ({
   padding: 64,
-  setPadding: (value) => set(() => ({ padding: value })),
+  setPadding: value => set(() => ({ padding: value })),
   language: 'javascript',
-  setLanguage: (value) => set(() => ({ language: value })),
+  setLanguage: value => set(() => ({ language: value })),
   width: 520,
-  setWidth: (value) => set(() => ({ width: value })),
+  setWidth: value => set(() => ({ width: value })),
   title: 'Untitled-1',
-  setTitle: (value) => set(() => ({ title: value })),
+  setTitle: value => set(() => ({ title: value })),
   theme: 'hyper',
-  setTheme: (value) => set(() => ({ theme: value })),
+  setTheme: value => set(() => ({ theme: value })),
   font: 'hack',
-  setFont: (value) => set(() => ({ font: value })),
+  setFont: value => set(() => ({ font: value })),
   code: '',
-  setCode: (value) => set(() => ({ code: value })),
+  setCode: value => set(() => ({ code: value })),
   darkMode: true,
-  setDarkMode: (value) => set(() => ({ darkMode: value })),
+  setDarkMode: value => set(() => ({ darkMode: value })),
   background: true,
-  setBackground: (value) => set(() => ({ background: value })),
+  setBackground: value => set(() => ({ background: value })),
   fontSize: 16,
-  setFontSize: (value) => set(() => ({ fontSize: value })),
+  setFontSize: value => set(() => ({ fontSize: value })),
 }));

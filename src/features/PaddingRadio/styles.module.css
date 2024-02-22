@@ -1,0 +1,7 @@
+.paddingBtn {
+  @apply p-1 text-[#8b8b8b] cursor-pointer hover:text-white;
+}
+
+.active {
+  @apply rounded-lg text-white bg-[#303030];
+}

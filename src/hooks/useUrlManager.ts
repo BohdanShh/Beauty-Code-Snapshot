@@ -6,10 +6,10 @@ export const useUrlManager = () => {
   const searchParams = useSearchParams();
 
   const addSearchParam = (key: string, value: string): void => {
-    const params = new URLSearchParams(searchParams);
+    const url = new URL(window.location.toString());
 
-    params.set(key, value);
-    router.push(`${pathname}?${params}`);
+    url.searchParams.set(key, value);
+    window.history.pushState({}, '', url);
   };
 
   return {

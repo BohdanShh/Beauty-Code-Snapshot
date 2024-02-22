@@ -34,7 +34,7 @@ const Editor: FC = () => {
       )}
     >
       <div>
-        <div className='flex items-center gap-2'>
+        <div className="flex items-center gap-2">
           <div className={`${styles.circle} bg-[#ff605c]`} />
           <div className={`${styles.circle} bg-[#ffbd44]`} />
           <div className={`${styles.circle} bg-[#00ca4e]`} />
@@ -42,14 +42,17 @@ const Editor: FC = () => {
         {editTitleModeEnabled ? (
           <Input
             className={cn(styles.titleField, 'outline-none bg-transparent')}
-            type='text'
+            type="text"
             autoFocus
             value={userPreferences.title}
             onChange={handleTitleChange}
             onBlur={handleBlur}
           />
         ) : (
-          <p className={styles.titleField} onClick={handleTitleClick}>
+          <p
+            className={styles.titleField}
+            onClick={handleTitleClick}
+          >
             {userPreferences.title}
           </p>
         )}
@@ -59,10 +62,10 @@ const Editor: FC = () => {
           styles.codeEditor,
           THEMES[userPreferences.theme as keyof ThemeCollection].codeTheme
         )}
-        placeholder='Write your code here...'
+        placeholder="Write your code here..."
         value={userPreferences.code}
         onValueChange={handleCodeChange}
-        highlight={(code) => hljs.highlight(code, { language: userPreferences.language }).value}
+        highlight={code => hljs.highlight(code, { language: userPreferences.language }).value}
         padding={10}
         style={{
           fontSize: userPreferences.fontSize,

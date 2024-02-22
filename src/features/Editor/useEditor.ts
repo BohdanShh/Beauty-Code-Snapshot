@@ -1,28 +1,44 @@
 import localFont from 'next/font/local';
 import { ChangeEvent, useState } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 
 import { SearchParam } from 'src/constants';
 import { useUrlManager } from 'src/hooks/useUrlManager';
 import { useUserPreferences } from 'src/store/useUserPreferences';
+import { useToast } from 'src/hooks/useToast';
 
-const hack = localFont({ src: '../../assets/fonts/Hack-Regular.ttf' });
-const consolas = localFont({ src: '../../assets/fonts/Consolas-Regular.ttf' });
-const cascadiaCode = localFont({ src: '../../assets/fonts/CascadiaCode-Regular.ttf' });
+const hack = localFont({ src: '../../assets/fonts/Hack-Regular.ttf', display: 'fallback' });
+const consolas = localFont({ src: '../../assets/fonts/Consolas-Regular.ttf', display: 'fallback' });
+const cascadiaCode = localFont({
+  src: '../../assets/fonts/CascadiaCode-Regular.ttf',
+  display: 'fallback',
+});
 
 export const useEditor = () => {
   const [editTitleModeEnabled, setEditTitleModeEnabled] = useState<boolean>(false);
 
+  const { toast } = useToast();
   const { addSearchParam, searchParams } = useUrlManager();
-  const userPreferences = useUserPreferences();
-
-  const fonts = { hack, consolas, cascadiaCode };
+  const { setTitle, setCode, ...userPreferences } = useUserPreferences(
+    useShallow(state => ({
+      setTitle: state.setTitle,
+      setCode: state.setCode,
+      title: state.title,
+      theme: state.theme,
+      darkMode: state.darkMode,
+      font: state.font,
+      language: state.language,
+      fontSize: state.fontSize,
+      code: state.code,
+    }))
+  );
 
   const handleTitleClick = (): void => setEditTitleModeEnabled(true);
 
   const handleTitleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const { value } = event.target;
 
-    userPreferences.setTitle(value);
+    setTitle(value);
 
     addSearchParam(SearchParam.TITLE, value);
   };
@@ -30,15 +46,19 @@ export const useEditor = () => {
   const handleBlur = (): void => setEditTitleModeEnabled(false);
 
   const handleCodeChange = (value: string): void => {
-    userPreferences.setCode(value);
+    try {
+      setCode(value);
 
-    addSearchParam(SearchParam.CODE, btoa(value));
+      addSearchParam(SearchParam.CODE, btoa(value));
+    } catch (error) {
+      toast({ description: 'Please, enter text in English!', variant: 'destructive' });
+    }
   };
 
   return {
     editTitleModeEnabled,
     userPreferences,
-    fonts,
+    fonts: { hack, consolas, cascadiaCode },
     searchParams,
     handleTitleClick,
     handleTitleChange,

@@ -13,10 +13,10 @@ import { useUserPreferences } from 'src/store/useUserPreferences';
 
 const Home: NextPage = () => {
   const codeRef = useRef<HTMLDivElement>(null);
-  const theme = useUserPreferences(({ theme }) => theme);
+  const theme = useUserPreferences(state => state.theme);
 
   return (
-    <div className='relative min-h-screen flex flex-col items-center justify-center gap-10'>
+    <div className="relative min-h-screen flex flex-col items-center justify-center gap-10">
       <CodeField ref={codeRef} />
       <SettingsBar ref={codeRef} />
       <div

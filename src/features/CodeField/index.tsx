@@ -34,7 +34,7 @@ const CodeEditor: FC<CodeEditorProps> = forwardRef((_, ref) => {
     <Resizable
       enable={{ left: true, right: true }}
       resizeRatio={2}
-      className='relative flex flex-col'
+      className="relative flex flex-col"
       handleStyles={{
         left: { left: 0, transform: 'translateX(-50%)', ...resizeButtonStyles },
         right: { right: 0, transform: 'translateX(50%)', ...resizeButtonStyles },
@@ -53,7 +53,10 @@ const CodeEditor: FC<CodeEditorProps> = forwardRef((_, ref) => {
           !userPreferences.background && styles.emptyBg
         )}
       >
-        <div className='flex-grow flex flex-col gap-3' ref={ref}>
+        <div
+          className="flex-grow flex flex-col gap-3"
+          ref={ref}
+        >
           <div
             className={cn(
               'flex-grow flex flex-col rounded-lg transition-[padding] duration-200',
