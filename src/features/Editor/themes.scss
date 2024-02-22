@@ -1,4 +1,4 @@
-.rainbow {
+.srcery {
   @import '~highlight.js/scss/srcery.scss';
 }
 
@@ -10,28 +10,28 @@
   @import '~highlight.js/scss/base16/chalk.scss';
 }
 
-.hybrid {
-  @import '~highlight.js/scss/hybrid.scss';
+.vulcan {
+  @import '~highlight.js/scss/base16/vulcan.scss';
 }
 
 .zenburn {
   @import '~highlight.js/scss/base16/zenburn.scss';
 }
 
-.agate {
-  @import '~highlight.js/scss/agate.scss';
+.hybrid {
+  @import '~highlight.js/scss/hybrid.scss';
 }
 
 .github-dark {
   @import '~highlight.js/scss/github-dark.scss';
 }
 
-.atom-one-dark {
-  @import '~highlight.js/scss/atom-one-dark.scss';
+.androidstudio {
+  @import '~highlight.js/scss/androidstudio.scss';
 }
 
-.gradient-dark {
-  @import '~highlight.js/scss/gradient-dark.scss';
+.circus {
+  @import '~highlight.js/scss/base16/circus.scss';
 }
 
 .ashes {

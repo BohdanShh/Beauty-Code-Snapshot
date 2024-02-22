@@ -1,13 +1,22 @@
 import { CSSProperties, useState } from 'react';
 import { ResizeCallback } from 're-resizable';
+import { useShallow } from 'zustand/react/shallow';
 
 import { SearchParam } from 'src/constants';
 import { useUrlManager } from 'src/hooks/useUrlManager';
 import { useUserPreferences } from 'src/store/useUserPreferences';
 
 export const useCodeField = () => {
-  const { searchParams, addSearchParam } = useUrlManager();
-  const userPreferences = useUserPreferences();
+  const { addSearchParam } = useUrlManager();
+  const { setWidth, ...userPreferences } = useUserPreferences(
+    useShallow(state => ({
+      setWidth: state.setWidth,
+      background: state.background,
+      theme: state.theme,
+      padding: state.padding,
+      width: state.width,
+    }))
+  );
 
   const [isDragging, setIsDragging] = useState<boolean>(false);
 
@@ -16,7 +25,7 @@ export const useCodeField = () => {
   };
 
   const handleResize: ResizeCallback = (event, direction, ref, delta): void => {
-    userPreferences.setWidth(ref.clientWidth);
+    setWidth(ref.clientWidth);
 
     addSearchParam(SearchParam.WIDTH, ref.clientWidth.toString());
   };
@@ -37,7 +46,6 @@ export const useCodeField = () => {
     maxWidth: 920,
     minHeight: 380,
     resizeButtonStyles,
-    searchParams,
     handleResizeStart,
     handleResize,
     handleResizeStop,

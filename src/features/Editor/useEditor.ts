@@ -18,7 +18,7 @@ export const useEditor = () => {
   const [editTitleModeEnabled, setEditTitleModeEnabled] = useState<boolean>(false);
 
   const { toast } = useToast();
-  const { addSearchParam, searchParams } = useUrlManager();
+  const { addSearchParam } = useUrlManager();
   const { setTitle, setCode, ...userPreferences } = useUserPreferences(
     useShallow(state => ({
       setTitle: state.setTitle,
@@ -59,7 +59,6 @@ export const useEditor = () => {
     editTitleModeEnabled,
     userPreferences,
     fonts: { hack, consolas, cascadiaCode },
-    searchParams,
     handleTitleClick,
     handleTitleChange,
     handleBlur,

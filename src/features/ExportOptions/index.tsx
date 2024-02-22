@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, ForwardedRef, RefObject, forwardRef } from 'react';
+import { FC, ForwardedRef, RefObject, forwardRef, memo } from 'react';
 import { Link2Icon, ClipboardIcon, ChevronDownIcon } from '@radix-ui/react-icons';
 
 import {
@@ -62,4 +62,4 @@ const ExportOptions: FC<ExportOptionsProps> = forwardRef(function ExportOptions(
   );
 });
 
-export default ExportOptions;
+export default memo(ExportOptions, () => true);

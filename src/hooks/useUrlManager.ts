@@ -1,21 +1,18 @@
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-
 export const useUrlManager = () => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const url = new URL(window.location.toString());
 
   const addSearchParam = (key: string, value: string): void => {
-    const url = new URL(window.location.toString());
+    if (!value.trim().length) {
+      url.searchParams.delete(key);
+    } else {
+      url.searchParams.set(key, value);
+    }
 
-    url.searchParams.set(key, value);
     window.history.pushState({}, '', url);
   };
 
   return {
-    router,
-    pathname,
-    searchParams,
+    url,
     addSearchParam,
   };
 };

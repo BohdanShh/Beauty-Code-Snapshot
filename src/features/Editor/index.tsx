@@ -6,7 +6,7 @@ import hljs from 'highlight.js';
 
 import { cn } from 'src/lib/utils';
 import { Input } from 'src/components/ui/input';
-import { SearchParam, THEMES } from 'src/constants';
+import { THEMES } from 'src/constants';
 import { useEditor } from 'src/features/Editor/useEditor';
 import { FontClasses, ThemeCollection } from 'src/types';
 
@@ -18,7 +18,6 @@ const Editor: FC = () => {
     editTitleModeEnabled,
     userPreferences,
     fonts,
-    searchParams,
     handleTitleClick,
     handleTitleChange,
     handleBlur,
@@ -28,8 +27,10 @@ const Editor: FC = () => {
   return (
     <div
       className={cn(
-        'relative w-full flex-grow flex flex-col p-4 rounded-lg border-[1px] border-[#8f8f8f] bg-[#d1d1d1c4] transition-all duration-200',
-        userPreferences.darkMode ? 'bg-[#191919]' : 'bg-[#e9e9e9]',
+        'relative w-full flex-grow flex flex-col p-4 rounded-lg border-[1px] border-[#8f8f8f] bg-[#d1d1d1c4] transition-[background] duration-200',
+        userPreferences.darkMode
+          ? 'bg-[#191919] brightness-100'
+          : 'bg-[#e9e9e9] text-gray-700 contrast-150',
         fonts[userPreferences.font as keyof FontClasses].className
       )}
     >
@@ -43,6 +44,7 @@ const Editor: FC = () => {
           <Input
             className={cn(styles.titleField, 'outline-none bg-transparent')}
             type="text"
+            maxLength={20}
             autoFocus
             value={userPreferences.title}
             onChange={handleTitleChange}
@@ -50,10 +52,10 @@ const Editor: FC = () => {
           />
         ) : (
           <p
-            className={styles.titleField}
+            className={cn(styles.titleField, 'text-ellipsis')}
             onClick={handleTitleClick}
           >
-            {userPreferences.title}
+            {userPreferences.title || 'Untitled-1'}
           </p>
         )}
       </div>
@@ -67,9 +69,7 @@ const Editor: FC = () => {
         onValueChange={handleCodeChange}
         highlight={code => hljs.highlight(code, { language: userPreferences.language }).value}
         padding={10}
-        style={{
-          fontSize: userPreferences.fontSize,
-        }}
+        style={{ fontSize: userPreferences.fontSize }}
       />
     </div>
   );

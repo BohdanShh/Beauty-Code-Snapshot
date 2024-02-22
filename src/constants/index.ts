@@ -23,7 +23,7 @@ export const THEMES = {
   hyper: {
     text: 'Hyper',
     background: 'bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500',
-    codeTheme: 'rainbow',
+    codeTheme: 'srcery',
   },
   oceanic: {
     text: 'Oceanic',
@@ -38,7 +38,7 @@ export const THEMES = {
   gotham: {
     text: 'Gotham',
     background: 'bg-gradient-to-br from-gray-700 via-gray-900 to-black',
-    codeTheme: 'hybrid',
+    codeTheme: 'vulcan',
   },
   blueSteel: {
     text: 'Blue Steel',
@@ -48,22 +48,22 @@ export const THEMES = {
   hawaii: {
     text: 'Hawaii',
     background: 'bg-gradient-to-br from-green-300 via-yellow-300 to-pink-300',
-    codeTheme: 'agate',
+    codeTheme: 'hybrid',
   },
   valentine: {
     text: 'Valentine',
     background: 'bg-gradient-to-br from-red-200 to-red-600',
     codeTheme: 'github-dark',
   },
-  witch: {
-    text: 'Witch',
-    background: 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900',
-    codeTheme: 'atom-one-dark',
+  pumpkin: {
+    text: 'Pumpkin',
+    background: 'bg-gradient-to-br from-yellow-200 via-yellow-400 to-yellow-700',
+    codeTheme: 'androidstudio',
   },
-  emerald: {
-    text: 'Emerald',
-    background: 'bg-gradient-to-br from-emerald-500 to-lime-600',
-    codeTheme: 'gradient-dark',
+  powerPuff: {
+    text: 'Power Puff',
+    background: 'bg-gradient-to-br from-sky-400 via-rose-400 to-lime-400',
+    codeTheme: 'circus',
   },
   blueFlame: {
     text: 'Blue Flame',

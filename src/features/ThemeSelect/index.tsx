@@ -21,7 +21,7 @@ const ThemeSelect = () => {
 
   return (
     <Select onValueChange={handleThemeChange}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger>
         <SelectValue
           placeholder={
             <div className={styles.menuItem}>

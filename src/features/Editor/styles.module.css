@@ -3,7 +3,7 @@
 }
 
 .titleField {
-  @apply absolute top-4 left-1/2 max-w-[500px] w-full leading-4 text-sm text-center text-[#8b8b8b] -translate-x-1/2;
+  @apply absolute top-4 left-1/2 w-[175px] whitespace-nowrap overflow-hidden leading-4 text-sm text-center text-[#8b8b8b] -translate-x-1/2;
 }
 
 .codeEditor {

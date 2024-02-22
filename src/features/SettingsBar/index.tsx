@@ -18,7 +18,7 @@ type SettingsBarProps = {
 
 const SettingsBar: FC<SettingsBarProps> = forwardRef(function SettingsBar(_, ref) {
   return (
-    <div className="fixed left-8 top-8 flex flex-col gap-5 max-w-[300px] w-full border-[1px] border-[#464646] p-7 rounded-lg bg-[#191919]">
+    <div className="fixed left-8 top-8 flex flex-col gap-5 w-[250px] border-[1px] border-[#464646] p-7 rounded-lg bg-[#191919]">
       <SettingItem label="Theme">
         <ThemeSelect />
       </SettingItem>

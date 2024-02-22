@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, ForwardedRef, forwardRef } from 'react';
+import { FC, ForwardedRef, forwardRef, memo } from 'react';
 import { Resizable } from 're-resizable';
 import { cn } from 'src/lib/utils';
 
@@ -8,7 +8,7 @@ import Editor from 'src/features/Editor';
 
 import { useCodeField } from 'src/features/CodeField/useCodeField';
 import { ThemeClasses } from 'src/types';
-import { SearchParam, THEMES } from 'src/constants';
+import { THEMES } from 'src/constants';
 
 import styles from 'src/features/CodeField/styles.module.css';
 
@@ -16,7 +16,7 @@ type CodeEditorProps = {
   ref?: ForwardedRef<HTMLDivElement>;
 };
 
-const CodeEditor: FC<CodeEditorProps> = forwardRef((_, ref) => {
+const CodeEditor: FC<CodeEditorProps> = forwardRef(function CodeEditor(_, ref) {
   const {
     isDragging,
     userPreferences,
@@ -24,7 +24,6 @@ const CodeEditor: FC<CodeEditorProps> = forwardRef((_, ref) => {
     maxWidth,
     minHeight,
     resizeButtonStyles,
-    searchParams,
     handleResizeStart,
     handleResize,
     handleResizeStop,
@@ -39,6 +38,7 @@ const CodeEditor: FC<CodeEditorProps> = forwardRef((_, ref) => {
         left: { left: 0, transform: 'translateX(-50%)', ...resizeButtonStyles },
         right: { right: 0, transform: 'translateX(50%)', ...resizeButtonStyles },
       }}
+      defaultSize={{ width: userPreferences.width, height: 'auto' }}
       handleClasses={{ left: styles.resizeBtn, right: styles.resizeBtn }}
       minWidth={minWidth}
       maxWidth={maxWidth}
@@ -60,13 +60,10 @@ const CodeEditor: FC<CodeEditorProps> = forwardRef((_, ref) => {
           <div
             className={cn(
               'flex-grow flex flex-col rounded-lg transition-[padding] duration-200',
-              userPreferences.darkMode ? 'brightness-100' : 'text-gray-700 contrast-150',
               userPreferences.background &&
                 THEMES?.[userPreferences.theme as keyof ThemeClasses].background
             )}
-            style={{
-              padding: userPreferences.padding,
-            }}
+            style={{ padding: userPreferences.padding }}
           >
             <Editor />
           </div>
@@ -83,7 +80,5 @@ const CodeEditor: FC<CodeEditorProps> = forwardRef((_, ref) => {
     </Resizable>
   );
 });
-
-CodeEditor.displayName = 'CodeEditor';
 
 export default CodeEditor;

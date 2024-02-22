@@ -25,8 +25,8 @@ export type ThemeClasses = {
   valentine: string;
   blueSteel: string;
   hawaii: string;
-  witch: string;
-  emerald: string;
+  pumpkin: string;
+  powerPuff: string;
   blueFlame: string;
 };
 
@@ -44,8 +44,8 @@ export type ThemeCollection = {
   blueSteel: ThemeItem;
   hawaii: ThemeItem;
   valentine: ThemeItem;
-  witch: ThemeItem;
-  emerald: ThemeItem;
+  pumpkin: ThemeItem;
+  powerPuff: ThemeItem;
   blueFlame: ThemeItem;
 };
 

@@ -6,6 +6,7 @@ import { ThemeProvider } from 'src/providers/ThemeProvider';
 import { ReactChildren } from 'src/types';
 
 import 'src/app/globals.css';
+import { cn } from 'src/lib/utils';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: ReactChildren) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={cn(inter.className)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

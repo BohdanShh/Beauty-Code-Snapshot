@@ -3,9 +3,11 @@ import { toPng, toBlob } from 'html-to-image';
 
 import { useToast } from 'src/hooks/useToast';
 import { useUserPreferences } from 'src/store/useUserPreferences';
+import { useUrlManager } from 'src/hooks/useUrlManager';
 
 export const useExportOptions = (ref: RefObject<HTMLDivElement>) => {
   const { toast } = useToast();
+  const { url } = useUrlManager();
   const title = useUserPreferences(state => state.title);
 
   const handleDownloadCodeAsImage = async (): Promise<void> => {
@@ -16,7 +18,7 @@ export const useExportOptions = (ref: RefObject<HTMLDivElement>) => {
 
       const link = document.createElement('a');
 
-      link.download = `${title}.png`;
+      link.download = `${title || 'Untitled-1'}.png`;
       link.href = dataUrl;
       link.click();
     } catch (error) {
@@ -49,7 +51,7 @@ export const useExportOptions = (ref: RefObject<HTMLDivElement>) => {
 
   const handleCopyUrl = async (): Promise<void> => {
     try {
-      const { origin, pathname, search } = window.location;
+      const { origin, pathname, search } = url;
 
       await navigator.clipboard.writeText(origin + pathname + search);
 
