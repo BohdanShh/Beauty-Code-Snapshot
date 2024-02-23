@@ -11,7 +11,6 @@ import {
 
 import { THEMES } from 'src/constants';
 import { cn } from 'src/lib/utils';
-import { ThemeClasses } from 'src/types';
 import { useThemeSelect } from 'src/features/ThemeSelect/useThemeSelect';
 
 import styles from 'src/features/SettingsBar/styles.module.css';
@@ -25,13 +24,8 @@ const ThemeSelect = () => {
         <SelectValue
           placeholder={
             <div className={styles.menuItem}>
-              <div
-                className={cn(
-                  'w-4 h-4 rounded-full',
-                  THEMES[theme as keyof ThemeClasses].background
-                )}
-              />
-              <div>{THEMES[theme as keyof ThemeClasses].text}</div>
+              <div className={cn('w-4 h-4 rounded-full', THEMES[theme].background)} />
+              <div>{THEMES[theme].text}</div>
             </div>
           }
         />

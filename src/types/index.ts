@@ -1,99 +1,13 @@
 import { ReactNode } from 'react';
 
+import { FONT_CLASSES, LANGUAGE_CLASSES, THEMES } from 'src/constants';
+
 export type ReactChildren = {
   children?: ReactNode;
 };
 
-export type UserPreferencesDefaultValues = {
-  width: number;
-  padding: number;
-  background: boolean;
-  theme: string;
-  font: string;
-  language: string;
-  title: string;
-  code: string;
-  darkMode: boolean;
-  fontSize: number;
-};
+export type Theme = keyof typeof THEMES;
 
-export type ThemeClasses = {
-  hyper: string;
-  oceanic: string;
-  cottonCandy: string;
-  gotham: string;
-  valentine: string;
-  blueSteel: string;
-  hawaii: string;
-  pumpkin: string;
-  powerPuff: string;
-  blueFlame: string;
-};
+export type Language = keyof typeof LANGUAGE_CLASSES;
 
-export type ThemeItem = {
-  text: string;
-  background: string;
-  codeTheme: string;
-};
-
-export type ThemeCollection = {
-  hyper: ThemeItem;
-  oceanic: ThemeItem;
-  cottonCandy: ThemeItem;
-  gotham: ThemeItem;
-  blueSteel: ThemeItem;
-  hawaii: ThemeItem;
-  valentine: ThemeItem;
-  pumpkin: ThemeItem;
-  powerPuff: ThemeItem;
-  blueFlame: ThemeItem;
-};
-
-export type LanguagesClasses = {
-  bash: string;
-  c: string;
-  cpp: string;
-  csharp: string;
-  clojure: string;
-  crystal: string;
-  css: string;
-  diff: string;
-  dockerfile: string;
-  elm: string;
-  elixir: string;
-  erlang: string;
-  graphql: string;
-  go: string;
-  haskell: string;
-  html: string;
-  java: string;
-  javascript: string;
-  json: string;
-  kotlin: string;
-  lisp: string;
-  lua: string;
-  markdown: string;
-  matlab: string;
-  pascal: string;
-  plaintext: string;
-  powershell: string;
-  objectivec: string;
-  php: string;
-  python: string;
-  ruby: string;
-  rust: string;
-  scala: string;
-  scss: string;
-  sql: string;
-  swift: string;
-  toml: string;
-  typescript: string;
-  xml: string;
-  yaml: string;
-};
-
-export type FontClasses = {
-  hack: string;
-  cascadiaCode: string;
-  consolas: string;
-};
+export type Font = keyof typeof FONT_CLASSES;

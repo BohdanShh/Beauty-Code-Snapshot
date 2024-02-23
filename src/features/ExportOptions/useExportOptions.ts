@@ -51,9 +51,7 @@ export const useExportOptions = (ref: RefObject<HTMLDivElement>) => {
 
   const handleCopyUrl = async (): Promise<void> => {
     try {
-      const { origin, pathname, search } = url;
-
-      await navigator.clipboard.writeText(origin + pathname + search);
+      await navigator.clipboard.writeText(url?.origin || '' + url?.pathname + url?.search);
 
       toast({ description: 'URL successfully copied!' });
     } catch (error) {

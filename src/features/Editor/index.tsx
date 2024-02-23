@@ -8,7 +8,6 @@ import { cn } from 'src/lib/utils';
 import { Input } from 'src/components/ui/input';
 import { THEMES } from 'src/constants';
 import { useEditor } from 'src/features/Editor/useEditor';
-import { FontClasses, ThemeCollection } from 'src/types';
 
 import 'src/features/Editor/themes.scss';
 import styles from 'src/features/Editor/styles.module.css';
@@ -31,7 +30,7 @@ const Editor: FC = () => {
         userPreferences.darkMode
           ? 'bg-[#191919] brightness-100'
           : 'bg-[#e9e9e9] text-gray-700 contrast-150',
-        fonts[userPreferences.font as keyof FontClasses].className
+        fonts[userPreferences.font].className
       )}
     >
       <div>
@@ -60,10 +59,7 @@ const Editor: FC = () => {
         )}
       </div>
       <CodeEditor
-        className={cn(
-          styles.codeEditor,
-          THEMES[userPreferences.theme as keyof ThemeCollection].codeTheme
-        )}
+        className={cn(styles.codeEditor, THEMES[userPreferences.theme].codeTheme)}
         placeholder="Write your code here..."
         value={userPreferences.code}
         onValueChange={handleCodeChange}

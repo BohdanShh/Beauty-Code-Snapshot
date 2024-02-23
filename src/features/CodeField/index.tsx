@@ -7,7 +7,6 @@ import { cn } from 'src/lib/utils';
 import Editor from 'src/features/Editor';
 
 import { useCodeField } from 'src/features/CodeField/useCodeField';
-import { ThemeClasses } from 'src/types';
 import { THEMES } from 'src/constants';
 
 import styles from 'src/features/CodeField/styles.module.css';
@@ -60,8 +59,7 @@ const CodeEditor: FC<CodeEditorProps> = forwardRef(function CodeEditor(_, ref) {
           <div
             className={cn(
               'flex-grow flex flex-col rounded-lg transition-[padding] duration-200',
-              userPreferences.background &&
-                THEMES?.[userPreferences.theme as keyof ThemeClasses].background
+              userPreferences.background && THEMES?.[userPreferences.theme].background
             )}
             style={{ padding: userPreferences.padding }}
           >

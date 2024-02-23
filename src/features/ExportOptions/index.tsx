@@ -62,4 +62,4 @@ const ExportOptions: FC<ExportOptionsProps> = forwardRef(function ExportOptions(
   );
 });
 
-export default memo(ExportOptions, () => true);
+export default ExportOptions;

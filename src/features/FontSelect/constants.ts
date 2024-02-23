@@ -1,8 +1,8 @@
 import { FONT_CLASSES } from 'src/constants';
-import { FontClasses } from 'src/types';
+import { Font } from 'src/types';
 
-export const FONTS = Object.keys(FONT_CLASSES).map((value, index) => ({
+export const FONTS = (Object.keys(FONT_CLASSES) as Font[]).map((value, index) => ({
   value,
-  text: FONT_CLASSES[value as keyof FontClasses],
+  text: FONT_CLASSES[value],
   id: String(index + 1),
 }));

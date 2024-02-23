@@ -1,8 +1,8 @@
 import { LANGUAGE_CLASSES } from 'src/constants';
-import { LanguagesClasses } from 'src/types';
+import { Language } from 'src/types';
 
-export const LANGUAGES = Object.keys(LANGUAGE_CLASSES).map((value, index) => ({
+export const LANGUAGES = (Object.keys(LANGUAGE_CLASSES) as Language[]).map((value, index) => ({
   value,
-  text: LANGUAGE_CLASSES[value as keyof LanguagesClasses],
+  text: LANGUAGE_CLASSES[value],
   id: String(index + 1),
 }));

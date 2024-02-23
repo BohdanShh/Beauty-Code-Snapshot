@@ -8,10 +8,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from 'src/components/ui/select';
-import SettingItem from 'src/features/SettingItem';
 
 import { FONT_CLASSES } from 'src/constants';
-import { FontClasses } from 'src/types';
 import { FONTS } from 'src/features/FontSelect/constants';
 import { useFontSelect } from 'src/features/FontSelect/useFontSelect';
 
@@ -21,7 +19,7 @@ const FontSelect = () => {
   return (
     <Select onValueChange={handleFontChange}>
       <SelectTrigger>
-        <SelectValue placeholder={FONT_CLASSES[font as keyof FontClasses]} />
+        <SelectValue placeholder={FONT_CLASSES[font]} />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>

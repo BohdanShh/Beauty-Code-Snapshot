@@ -1,5 +1,3 @@
-import { FontClasses, LanguagesClasses } from 'src/types';
-
 export enum SearchParam {
   WIDTH = 'width',
   THEME = 'theme',
@@ -13,7 +11,7 @@ export enum SearchParam {
   FONT_SIZE = 'fontSize',
 }
 
-export const FONT_CLASSES: FontClasses = {
+export const FONT_CLASSES = {
   hack: 'Hack',
   consolas: 'Consolas',
   cascadiaCode: 'Cascadia Code',
@@ -72,7 +70,7 @@ export const THEMES = {
   },
 };
 
-export const LANGUAGE_CLASSES: LanguagesClasses = {
+export const LANGUAGE_CLASSES = {
   bash: 'Bash',
   c: 'C',
   cpp: 'C++',
