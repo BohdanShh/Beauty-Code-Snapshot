@@ -6,7 +6,6 @@ import { SearchParam } from 'src/constants';
 
 export const useDarkModeSwitch = () => {
   const { addSearchParam } = useUrlManager();
-
   const { darkMode, setDarkMode } = useUserPreferences(
     useShallow(state => ({
       darkMode: state.darkMode,

@@ -1,12 +1,14 @@
 import { useShallow } from 'zustand/react/shallow';
+import { useState } from 'react';
 
 import { SearchParam } from 'src/constants';
 import { useUrlManager } from 'src/hooks/useUrlManager';
 import { useUserPreferences } from 'src/store/useUserPreferences';
 
 export const useLanguageSelect = () => {
-  const { addSearchParam } = useUrlManager();
+  const [open, setOpen] = useState<boolean>(false);
 
+  const { addSearchParam } = useUrlManager();
   const { language, setLanguage } = useUserPreferences(
     useShallow(state => ({
       language: state.language,
@@ -20,5 +22,10 @@ export const useLanguageSelect = () => {
     addSearchParam(SearchParam.LANGUAGE, value);
   };
 
-  return { language, handleLanguageChange };
+  const handleSelect = (value: string): void => {
+    handleLanguageChange(value);
+    setOpen(false);
+  };
+
+  return { language, open, setOpen, handleSelect };
 };

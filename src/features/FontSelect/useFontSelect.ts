@@ -6,7 +6,6 @@ import { useUserPreferences } from 'src/store/useUserPreferences';
 
 export const useFontSelect = () => {
   const { addSearchParam } = useUrlManager();
-
   const { font, setFont } = useUserPreferences(
     useShallow(state => ({
       font: state.font,

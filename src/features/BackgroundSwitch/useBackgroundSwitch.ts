@@ -6,7 +6,6 @@ import { SearchParam } from 'src/constants';
 
 export const useBackgroundSwitch = () => {
   const { addSearchParam } = useUrlManager();
-
   const { background, setBackground } = useUserPreferences(
     useShallow(state => ({
       background: state.background,
