@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Beauty Code Snapshot
+
+## Overview
+
+Beauty Code Snapshot is a project that allows users to write and format code snippets in various languages, apply different styles, and save their code as an image. This tool aims to provide a visually appealing representation of code snippets for sharing on platforms where formatting matters.
+
+## Features
+
+1. **Code Editing:**
+   - Users can write and edit code directly within the Beauty Code Snapshot interface.
+   - Syntax highlighting is supported for a variety of programming languages.
+
+2. **Formatting Options:**
+   - Apply different code styles and themes to enhance the visual appeal.
+   - Customize font size, color schemes, and other visual elements.
+
+3. **Image Generation:**
+   - Users can save their code as an image directly from the application.
+   - The generated image retains the formatting and styling applied to the code.
+
+4. **Language Support:**
+   - Beauty Code Snapshot supports a wide range of programming languages, making it versatile for developers across different domains.
+
+5. **Easy Sharing:**
+   - Share code snippets effortlessly by saving them as images, ensuring the preservation of formatting when posted on platforms that do not support code blocks.
+
+## Usage
+
+1. **Code Input:**
+   - Open the application and start typing or pasting your code into the editor.
+
+2. **Formatting:**
+   - Experiment with different formatting options available in the interface to customize the appearance of your code.
+
+3. **Preview:**
+   - Preview how your code will look in the final image before saving.
+
+4. **Save as Image:**
+   - Click on the "Export" button to generate and download an image of your code snippet.
 
 ## Getting Started
 
-First, run the development server:
+To run Beauty Code Snapshot locally:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository.
+2. Run `yarn install` to install dependencies.
+3. Run `yarn dev` to launch the project.
+4. Access the application in your web browser at `http://localhost:3000`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Screenshots
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![image](https://github.com/BohdanShh/Beauty-Code-Snapshot/assets/99605305/c6aa5ac8-b4a2-45bf-a691-e3552b3fa05d)
+![image](https://github.com/BohdanShh/Beauty-Code-Snapshot/assets/99605305/79a2a75c-c5a6-4a02-8df5-3a7a16513c83)
+![image](https://github.com/BohdanShh/Beauty-Code-Snapshot/assets/99605305/af189564-1ebc-4dd0-a39f-09b7f7107fbc)
